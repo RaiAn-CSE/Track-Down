@@ -4,7 +4,7 @@
      padding: 0;
  }
 
- .form-section {
+ .formSection {
      display: flex;
      justify-content: center;
      align-items: center;
@@ -12,7 +12,7 @@
      width: 100%;
  }
 
- .form-box {
+ .formBox {
      width: 400px;
      height: 500px;
      display: flex;
@@ -20,67 +20,66 @@
      align-items: center;
  }
 
- .form-box h2 {
+ .formBox h2 {
      font-size: 2em;
      text-align: center;
      color: #4e4e4e;
  }
 
  /* Input Field  */
- .form-group {
+ .formGroup {
      position: relative;
      padding: 20px 0 0px 0;
      width: 300px;
      max-width: 100%;
  }
 
- .form-group input {
+ .formGroup input {
      border: none;
      border: 1px solid #9e9e9e;
      border-radius: 3px;
      color: black;
      display: block;
      font-size: 16px;
-     padding: 10px 0;
      width: 100%;
-     padding-left: 5px;
+     padding: 10px 16px;
  }
 
- .form-group label {
+ .formGroup label {
      color: #9e9e9e;
      font-size: 16px;
-     font-weight: 100;
+     font-weight: 400;
      position: absolute;
      top: 0;
-     left: 10px;
+     left: 16px;
      pointer-events: none;
      transform: translateY(30px);
  }
 
- .form-group input:valid,
- .form-group input:focus {
+ .formGroup input:valid,
+ .formGroup input:focus {
      border: 1px solid #10a37f;
      outline: none;
  }
 
- .form-group input:valid+label,
- .form-group input:focus+label {
+ .formGroup input:valid+label,
+ .formGroup input:focus+label {
      color: #10a37f;
      font-size: 14px;
      transform: translateY(6px);
      background: white;
      border-radius: 3px;
-     padding: 0 5px;
+     padding: 0 3px;
  }
 
 
- .form-group label {
+ .formGroup label {
      transition: all 0.2s ease-in-out;
  }
 
 
  /* Button Style  */
- .form-btn {
+ .formBtn {
      width: 100%;
      background: #10a37f;
      border: 1px solid #9e9e9e;
@@ -90,15 +89,25 @@
      transition: background-color 0.2s ease-in-out;
  }
 
- .form-btn:hover {
+ .formBtn:hover {
      background: #108d6d;
  }
 
- .form-span {
+ .formSpan {
      color: #10a37f;
+     text-decoration-line: underline;
  }
 
- .signin-btn {
+ .formSwitch p {
+     font-size: small;
+     text-align: center;
+     margin: 10px 0 10px 0;
+ }
+
+ .signInBtn {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
      width: 100%;
      border: 1px solid #9e9e9e;
      height: 50px;
@@ -109,11 +118,11 @@
      transition: background-color 0.2s ease-in-out;
  }
 
- .signin-btn:hover {
+ .signInBtn:hover {
      background: #e6e6e6;
  }
 
- .signin-btn img {
+ .signInBtn img {
      height: 50%;
      margin: 0 15px;
  }

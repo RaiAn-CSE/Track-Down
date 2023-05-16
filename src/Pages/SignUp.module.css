@@ -1,0 +1,128 @@
+ /* Body  */
+ * {
+     margin: 0;
+     padding: 0;
+ }
+
+ .formSection {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     width: 100%;
+ }
+
+ .formBox {
+     width: 400px;
+     height: 500px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+ }
+
+ .formBox h2 {
+     font-size: 2em;
+     text-align: center;
+     color: #4e4e4e;
+ }
+
+ /* Input Field  */
+ .formGroup {
+     position: relative;
+     padding: 20px 0 0px 0;
+     width: 300px;
+     max-width: 100%;
+ }
+
+ .formGroup input {
+     border: none;
+     border: 1px solid #9e9e9e;
+     border-radius: 3px;
+     color: black;
+     display: block;
+     font-size: 16px;
+     width: 100%;
+     padding: 10px 16px;
+ }
+
+ .formGroup label {
+     color: #9e9e9e;
+     font-size: 16px;
+     font-weight: 400;
+     position: absolute;
+     top: 0;
+     left: 16px;
+     pointer-events: none;
+     transform: translateY(30px);
+ }
+
+ .formGroup input:valid,
+ .formGroup input:focus {
+     border: 1px solid #10a37f;
+     outline: none;
+ }
+
+ .formGroup input:valid+label,
+ .formGroup input:focus+label {
+     color: #10a37f;
+     font-size: 14px;
+     transform: translateY(6px);
+     background: white;
+     border-radius: 3px;
+     padding: 0 3px;
+ }
+
+
+ .formGroup label {
+     transition: all 0.2s ease-in-out;
+ }
+
+
+ /* Button Style  */
+ .formBtn {
+     width: 100%;
+     background: #10a37f;
+     border: 1px solid #9e9e9e;
+     height: 50px;
+     color: white;
+     border-radius: 3px;
+     transition: background-color 0.2s ease-in-out;
+ }
+
+ .formBtn:hover {
+     background: #108d6d;
+ }
+
+ .formSpan {
+     color: #10a37f;
+     text-decoration-line: underline;
+ }
+
+ .formSwitch p {
+     font-size: small;
+     text-align: center;
+     margin: 10px 0 10px 0;
+ }
+
+ .signInBtn {
+     display: flex;
+     justify-content: flex-start;
+     align-items: center;
+     width: 100%;
+     border: 1px solid #9e9e9e;
+     height: 50px;
+     color: white;
+     border-radius: 3px;
+     color: black;
+     margin-bottom: 7px;
+     transition: background-color 0.2s ease-in-out;
+ }
+
+ .signInBtn:hover {
+     background: #e6e6e6;
+ }
+
+ .signInBtn img {
+     height: 50%;
+     margin: 0 15px;
+ }
