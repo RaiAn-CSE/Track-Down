@@ -203,14 +203,13 @@ a {
     font-size: 13px;
 }
 
-.createPostLinks li img {
-    width: 18px;
-    margin-right: 5px;
+.createPostLinks li:last-child {
+    background: #10a37f;
+    color: #fff;
 }
 
-.createPostLinks li:last-child {
-    background-color: #045be6;
-    color: #fff;
+.createPostLinks li:last-child:hover {
+    background: #108d6d;
 }
 
 .sortBy {

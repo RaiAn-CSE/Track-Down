@@ -1,4 +1,5 @@
 import React from 'react';
+import './Home.css'
 
 const Home = () => {
     return (
@@ -25,7 +26,6 @@ const Home = () => {
 
             {/* <!-- main content  --> */}
             <div className="main-content">
-
                 {/* <!-- story gallery  --> */}
                 <div className="story-gallery">
                     <div className="story story1">

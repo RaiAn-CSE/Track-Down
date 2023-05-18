@@ -1,12 +1,15 @@
 import React from 'react';
+import postCSS from './Post.module.css'
 import imgPhoto from "../Assets/images/photo.png"
 import imgVideo from "../Assets/images/video.png"
 import imgEvent from "../Assets/images/event.png"
 import imgUser from "../Assets/images/user-1.png"
 import imgTrend from "../Assets/images/more.png"
 import imgCover from "../Assets/images/cover-pic.png"
-// import imgCover from "../Assets/images/cover-pic.png"
-import postCSS from './Post.module.css'
+import imgPost from "../Assets/images/post-image-1.png"
+
+import { BsCameraVideoFill, BsFillCalendarEventFill, BsFillCameraFill, BsFillSendCheckFill, BsSendCheck } from "react-icons/bs";
+
 
 const Post = () => {
     return (
@@ -71,10 +74,10 @@ const Post = () => {
                         <textarea rows="2" placeholder="write a post"></textarea>
                     </div>
                     <div className={postCSS.createPostLinks}>
-                        <li><img src={imgPhoto} alt="" />Photo</li>
-                        <li><img src={imgVideo} alt="video" />Video</li>
-                        <li><img src={imgEvent} />Event</li>
-                        <li>Post</li>
+                        <li><BsFillCameraFill size={20} /><span className='ml-2'>Photo</span></li>
+                        <li><BsCameraVideoFill size={20} /><span className='ml-2'>Video</span></li>
+                        <li><BsFillCalendarEventFill size={20} /><span className='ml-2'>Event</span></li>
+                        <li><BsSendCheck size={20} /></li>
                     </div>
                 </div>
 
@@ -83,7 +86,60 @@ const Post = () => {
                     <p>Sort by: <span>top <img src="./images/down-arrow.png" alt="img" /></span></p>
                 </div>
 
+                {/* post 1  =================================*/}
+                <div className={postCSS.post}>
+                    <div className={postCSS.postAuthor}>
+                        <img src={imgUser} alt="user" />
+                        <div>
+                            <h1>Canserio Leo</h1>
+                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small>21 hours ago</small>
+                        </div>
 
+                    </div>
+                    <p>The success of every websites depends on search engine optimization and digital marketing
+                        strategy. If you are on first page of all major search engines then you are ahead among your
+                        competitors.</p>
+
+                    <img src={imgPost} alt="post image" width="100%" />
+
+                    <div className={postCSS.postStats}>
+                        <div>
+                            <img src="./images/thumbsup.png" alt="img" />
+                            <img src="./images/love.png" alt="img" />
+                            <img src="./images/clap.png" alt="img" />
+                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className={postCSS.postActivity}>
+                        <div>
+                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
+                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/like.png" alt="like" />
+                            <span>Like</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/comment.png" alt="comment" />
+                            <span>Comment</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/share.png" alt="share" />
+                            <span>Share</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/send.png" alt="send" />
+                            <span>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* post 2  =================================*/}
                 <div className={postCSS.post}>
                     <div className={postCSS.postAuthor}>
                         <img src="./images/user-4.png" alt="user" />
@@ -136,7 +192,7 @@ const Post = () => {
                     </div>
                 </div>
 
-
+                {/* post 3  =================================*/}
                 <div className={postCSS.post}>
                     <div className={postCSS.postAuthor}>
                         <img src="./images/user-4.png" alt="user" />
@@ -189,60 +245,7 @@ const Post = () => {
                     </div>
                 </div>
 
-
-                <div className={postCSS.post}>
-                    <div className={postCSS.postAuthor}>
-                        <img src="./images/user-4.png" alt="user" />
-                        <div>
-                            <h1>Canserio Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>21 hours ago</small>
-                        </div>
-
-                    </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
-
-                    <div className={postCSS.postStats}>
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className={postCSS.postActivity}>
-                        <div>
-                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
-                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-
+                {/* post 4  =================================*/}
                 <div className={postCSS.post}>
                     <div className={postCSS.postAuthor}>
                         <img src="./images/user-4.png" alt="user" />
