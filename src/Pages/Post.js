@@ -1,16 +1,23 @@
 import React from 'react';
 import './Post.css'
+import imgPhoto from "../Assets/images/photo.png"
+import imgVideo from "../Assets/images/video.png"
+import imgEvent from "../Assets/images/event.png"
+import imgUser from "../Assets/images/user-1.png"
+import imgTrend from "../Assets/images/more.png"
+import imgCover from "../Assets/images/cover-pic.png"
+// import imgCover from "../Assets/images/cover-pic.png"
 import postCSS from './Post.module.css'
 
 const Post = () => {
     return (
         <div className="container">
             {/* <!-- left sidebar  --> */}
-            <div className="left-sidebar">
-                <div className="sidebar-profile-box">
-                    <img src="./images/cover-pic.png" alt="cover" width="100%" />
-                    <div className="sidebar-profile-info">
-                        <img src="./images/user-1.png" alt="profile" />
+            <div className="leftSidebar">
+                <div className="sidebarProfileBox">
+                    <img src={imgCover} alt="cover" width="100%" />
+                    <div className="sidebarProfileInfo">
+                        <img src={imgUser} alt="profile" />
                         <h1>John Smith</h1>
                         <h3>Web developer at Microsoft</h3>
                         <ul>
@@ -20,13 +27,13 @@ const Post = () => {
                         </ul>
                     </div>
 
-                    <div className="sidebar-profile-link">
+                    <div className="sidebarProfileLink">
                         <a href="#"><img src="./images/items.png" alt="" />My Items</a>
                         <a href="#"><img src="./images/premium.png" alt="" />Try premium</a>
                     </div>
                 </div>
 
-                <div className="sidebar-activity">
+                <div className="sidebarActivity">
                     <h3>RECENT</h3>
                     <a href="#"><img src="./images/recent.png" alt="pic" />Web Development</a>
                     <a href="#"><img src="./images/recent.png" alt="pic" />User Interface</a>
@@ -44,7 +51,7 @@ const Post = () => {
                     <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> userinterface</a>
                     <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> onlinelearning</a>
 
-                    <div className="discover-more-link">
+                    <div className="discoverMoreLink">
                         <a href="#">Discover more</a>
                     </div>
                 </div>
@@ -60,20 +67,19 @@ const Post = () => {
             <div className="middle">
 
                 <div className="createPost">
-                    <div className="create-post-input">
-                        <img src="../Assets/images/user-1.png" alt="user" />
-                        
+                    <div className="createPostInput">
+                        <img src={imgUser} alt="user" />
                         <textarea rows="2" placeholder="write a post"></textarea>
                     </div>
-                    <div className="create-post-links">
-                        <li><img src="../Assets/images/photo.png" alt="Photo" />Photo</li>
-                        <li><img src="../Assets/images/video.png" alt="video" />Video</li>
-                        <li><img src="./images/event.png" alt="event" />Event</li>
+                    <div className="createPostLinks">
+                        <li><img src={imgPhoto} alt="" />Photo</li>
+                        <li><img src={imgVideo} alt="video" />Video</li>
+                        <li><img src={imgEvent} />Event</li>
                         <li>Post</li>
                     </div>
                 </div>
 
-                <div className="sort-by">
+                <div className="sortBy">
                     <hr />
                     <p>Sort by: <span>top <img src="./images/down-arrow.png" alt="img" /></span></p>
                 </div>
@@ -402,7 +408,7 @@ const Post = () => {
             {/* <!-- right-sidebar  --> */}
             <div className="right-sidebar">
                 <div className="sidebar-news">
-                    <img src="./images/more.png" alt="more" className="more-info-icon" />
+                    <img src={imgTrend} alt="more" className="more-info-icon" />
                     <h3>Trending News</h3>
                     <a href="#">High demand for skilled manpower</a>
                     <span>1d ago &middot; 10,934 readers</span>

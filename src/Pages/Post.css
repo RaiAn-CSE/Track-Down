@@ -26,9 +26,9 @@ a {
     flex-wrap: wrap;
 }
 
-/* left-sidebar */
+/* leftSidebar */
 
-.left-sidebar,
+.leftSidebar,
 .right-sidebar {
     flex-basis: 25%;
     align-self: flex-start;
@@ -36,16 +36,16 @@ a {
     top: 73px;
 }
 
-.sidebar-profile-box {
+.sidebarProfileBox {
     background-color: #fff;
     padding: 0 0 20px;
 }
 
-.sidebar-profile-info {
+.sidebarProfileInfo {
     padding: 0 20px;
 }
 
-.sidebar-profile-info img {
+.sidebarProfileInfo img {
     width: 90px;
     background-color: #fff;
     border-radius: 50%;
@@ -53,42 +53,42 @@ a {
     padding: 4px;
 }
 
-.sidebar-profile-info h1 {
+.sidebarProfileInfo h1 {
     font-size: 20px;
     font-weight: 600;
     color: #222;
 }
 
-.sidebar-profile-info h3 {
+.sidebarProfileInfo h3 {
     font-size: 14px;
     font-weight: 500;
     color: #777;
     margin: 3px 0;
 }
 
-.sidebar-profile-info ul {
+.sidebarProfileInfo ul {
     list-style: none;
     margin: 20px 0;
 }
 
-.sidebar-profile-info ul li {
+.sidebarProfileInfo ul li {
     width: 100%;
     font-size: 14px;
     margin: 5px 0;
 }
 
-.sidebar-profile-info ul li span {
+.sidebarProfileInfo ul li span {
     float: right;
     color: #3498db;
 }
 
-.sidebar-profile-link {
+.sidebarProfileLink {
     display: flex;
     align-items: center;
     border-top: 1px solid #ccc;
 }
 
-.sidebar-profile-link a {
+.sidebarProfileLink a {
     padding: 15px 5px;
     border-left: 1px solid #ccc;
     font-size: 13px;
@@ -98,41 +98,41 @@ a {
     flex-basis: 50%;
 }
 
-.sidebar-profile-link a:first-child {
+.sidebarProfileLink a:first-child {
     border: 0;
 }
 
-.sidebar-profile-link a img {
+.sidebarProfileLink a img {
     width: 20px;
     margin-right: 10px;
 }
 
-.sidebar-activity {
+.sidebarActivity {
     background-color: #fff;
     margin: 12px 0;
     padding: 5px 20px;
 }
 
-.sidebar-activity h3 {
+.sidebarActivity h3 {
     color: #777;
     font-weight: 500;
     font-size: 14px;
     margin: 20px 0 10px;
 }
 
-.sidebar-activity a {
+.sidebarActivity a {
     display: flex;
     align-items: center;
     margin: 10px 0;
     font-size: 14px;
 }
 
-.sidebar-activity a img {
+.sidebarActivity a img {
     width: 20px;
     margin-right: 10px;
 }
 
-.discover-more-link {
+.discoverMoreLink {
     border-top: 1px solid #ccc;
     margin-top: 20px;
     margin-left: -20px;
@@ -140,7 +140,7 @@ a {
     text-align: center;
 }
 
-.discover-more-link a {
+.discoverMoreLink a {
     color: #045be6;
     display: inline-block;
     margin: 10px 0;
@@ -161,35 +161,36 @@ a {
     border-radius: 5px;
 }
 
-.create-post-input {
+.createPostInput {
     padding: 20px 25px 10px;
     display: flex;
     align-items: flex-start;
 }
 
-.create-post-input img {
+.createPostInput img {
     width: 35px;
     border-radius: 50%;
     margin-right: 10px;
 }
 
-.create-post-input textarea {
+.createPostInput textarea {
     border: 0;
     outline: 0;
     resize: none;
     margin-top: 10px;
+    width: 100%;
 }
 
 ::placeholder {
     font-weight: 500;
 }
 
-.create-post-links {
+.createPostLinks {
     display: flex;
     align-items: flex-start;
 }
 
-.create-post-links li {
+.createPostLinks li {
     list-style: none;
     display: flex;
     justify-content: center;
@@ -202,39 +203,39 @@ a {
     font-size: 13px;
 }
 
-.create-post-links li img {
+.createPostLinks li img {
     width: 18px;
     margin-right: 5px;
 }
 
-.create-post-links li:last-child {
+.createPostLinks li:last-child {
     background-color: #045be6;
     color: #fff;
 }
 
-.sort-by {
+.sortBy {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
 
-.sort-by hr {
+.sortBy hr {
     height: 1px;
     background: #ccc;
     border: 0;
     flex-grow: 1;
 }
 
-.sort-by p {
+.sortBy p {
     font-size: 13px;
     padding-left: 5px;
 }
 
-.sort-by p span {
+.sortBy p span {
     font-weight: 600;
 }
 
-.sort-by p span img {
+.sortBy p span img {
     width: 12px;
     margin-left: 3px;
 }
@@ -470,7 +471,7 @@ a {
         padding: 15px 3%;
     }
 
-    .left-sidebar,
+    .leftSidebar,
     .right-sidebar {
         flex-basis: 100%;
         position: relative;
@@ -491,11 +492,11 @@ a {
         margin: 10px auto;
     }
 
-    .sidebar-activity {
+    .sidebarActivity {
         display: none;
     }
 
-    .sidebar-activity.open-activity {
+    .sidebarActivity.open-activity {
         display: block;
     }
 }
