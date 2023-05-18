@@ -1,5 +1,4 @@
 import React from 'react';
-import './Post.css'
 import imgPhoto from "../Assets/images/photo.png"
 import imgVideo from "../Assets/images/video.png"
 import imgEvent from "../Assets/images/event.png"
@@ -11,12 +10,12 @@ import postCSS from './Post.module.css'
 
 const Post = () => {
     return (
-        <div className="container">
+        <div className={postCSS.container}>
             {/* <!-- left sidebar  --> */}
-            <div className="leftSidebar">
-                <div className="sidebarProfileBox">
+            <div className={postCSS.leftSidebar}>
+                <div className={postCSS.sidebarProfileBox}>
                     <img src={imgCover} alt="cover" width="100%" />
-                    <div className="sidebarProfileInfo">
+                    <div className={postCSS.sidebarProfileInfo}>
                         <img src={imgUser} alt="profile" />
                         <h1>John Smith</h1>
                         <h3>Web developer at Microsoft</h3>
@@ -27,13 +26,13 @@ const Post = () => {
                         </ul>
                     </div>
 
-                    <div className="sidebarProfileLink">
+                    <div className={postCSS.sidebarProfileLink}>
                         <a href="#"><img src="./images/items.png" alt="" />My Items</a>
                         <a href="#"><img src="./images/premium.png" alt="" />Try premium</a>
                     </div>
                 </div>
 
-                <div className="sidebarActivity">
+                <div className={postCSS.sidebarActivity}>
                     <h3>RECENT</h3>
                     <a href="#"><img src="./images/recent.png" alt="pic" />Web Development</a>
                     <a href="#"><img src="./images/recent.png" alt="pic" />User Interface</a>
@@ -51,12 +50,12 @@ const Post = () => {
                     <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> userinterface</a>
                     <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> onlinelearning</a>
 
-                    <div className="discoverMoreLink">
+                    <div className={postCSS.discoverMoreLink}>
                         <a href="#">Discover more</a>
                     </div>
                 </div>
 
-                <p id="show-more-activity" onclick="toggleActivity()">Show more <b>+</b></p>
+                <p id="showMoreActivity" onclick="toggleActivity()">Show more <b>+</b></p>
             </div>
 
 
@@ -64,14 +63,14 @@ const Post = () => {
 
 
             {/* <!-- middle  --> */}
-            <div className="middle">
+            <div className={postCSS.middle}>
 
-                <div className="createPost">
-                    <div className="createPostInput">
+                <div className={postCSS.createPost}>
+                    <div className={postCSS.createPostInput}>
                         <img src={imgUser} alt="user" />
                         <textarea rows="2" placeholder="write a post"></textarea>
                     </div>
-                    <div className="createPostLinks">
+                    <div className={postCSS.createPostLinks}>
                         <li><img src={imgPhoto} alt="" />Photo</li>
                         <li><img src={imgVideo} alt="video" />Video</li>
                         <li><img src={imgEvent} />Event</li>
@@ -79,225 +78,14 @@ const Post = () => {
                     </div>
                 </div>
 
-                <div className="sortBy">
+                <div className={postCSS.sortBy}>
                     <hr />
                     <p>Sort by: <span>top <img src="./images/down-arrow.png" alt="img" /></span></p>
                 </div>
 
 
-                <div className="post">
-                    <div className="post-author">
-                        <img src="./images/user-3.png" alt="user" />
-                        <div>
-                            <h1>Benjamin Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>2 hours ago</small>
-                        </div>
-
-                    </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img src="./images/post-image-1.png" alt="post image" width="100%" />
-
-                    <div className="post-stats">
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className="liked-users">Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className="post-activity">
-                        <div>
-                            <img src="./images/user-1.png" alt="image" className="post-activity-user-icon" />
-                            <img src="./images/down-arrow.png" alt="image" className="post-activity-arrow-icon" />
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className="post">
-                    <div className="post-author">
-                        <img src="./images/user-3.png" alt="user" />
-                        <div>
-                            <h1>Benjamin Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>2 hours ago</small>
-                        </div>
-
-                    </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img src="./images/post-image-1.png" alt="post image" width="100%" />
-
-                    <div className="post-stats">
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className="liked-users">Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className="post-activity">
-                        <div>
-                            <img src="./images/user-1.png" alt="image" className="post-activity-user-icon" />
-                            <img src="./images/down-arrow.png" alt="image" className="post-activity-arrow-icon" />
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className="post">
-                    <div className="post-author">
-                        <img src="./images/user-3.png" alt="user" />
-                        <div>
-                            <h1>Benjamin Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>2 hours ago</small>
-                        </div>
-
-                    </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img src="./images/post-image-1.png" alt="post image" width="100%" />
-
-                    <div className="post-stats">
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className="liked-users">Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className="post-activity">
-                        <div>
-                            <img src="./images/user-1.png" alt="image" className="post-activity-user-icon" />
-                            <img src="./images/down-arrow.png" alt="image" className="post-activity-arrow-icon" />
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className="post">
-                    <div className="post-author">
-                        <img src="./images/user-3.png" alt="user" />
-                        <div>
-                            <h1>Benjamin Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>2 hours ago</small>
-                        </div>
-
-                    </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img src="./images/post-image-1.png" alt="post image" width="100%" />
-
-                    <div className="post-stats">
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className="liked-users">Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className="post-activity">
-                        <div>
-                            <img src="./images/user-1.png" alt="image" className="post-activity-user-icon" />
-                            <img src="./images/down-arrow.png" alt="image" className="post-activity-arrow-icon" />
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className="post-activity-link">
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="post">
-                    <div className="post-author">
+                <div className={postCSS.post}>
+                    <div className={postCSS.postAuthor}>
                         <img src="./images/user-4.png" alt="user" />
                         <div>
                             <h1>Canserio Leo</h1>
@@ -312,36 +100,36 @@ const Post = () => {
 
                     <img src="./images/post-image-2.png" alt="post image" width="100%" />
 
-                    <div className="post-stats">
+                    <div className={postCSS.postStats}>
                         <div>
                             <img src="./images/thumbsup.png" alt="img" />
                             <img src="./images/love.png" alt="img" />
                             <img src="./images/clap.png" alt="img" />
-                            <span className="liked-users">Abhinav Mishra and 75 others</span>
+                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
                         </div>
                         <div>
                             <span>22 comments &middot; 40 shares</span>
                         </div>
                     </div>
 
-                    <div className="post-activity">
+                    <div className={postCSS.postActivity}>
                         <div>
-                            <img src="./images/user-2.png" alt="image" className="post-activity-user-icon" />
-                            <img src="./images/down-arrow.png" alt="image" className="post-activity-arrow-icon" />
+                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
+                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/like.png" alt="like" />
                             <span>Like</span>
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/comment.png" alt="comment" />
                             <span>Comment</span>
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/share.png" alt="share" />
                             <span>Share</span>
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/send.png" alt="send" />
                             <span>Send</span>
                         </div>
@@ -349,13 +137,13 @@ const Post = () => {
                 </div>
 
 
-                <div className="post">
-                    <div className="post-author">
+                <div className={postCSS.post}>
+                    <div className={postCSS.postAuthor}>
                         <img src="./images/user-4.png" alt="user" />
                         <div>
-                            <h1>Nikko Leo</h1>
+                            <h1>Canserio Leo</h1>
                             <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>2 hours ago</small>
+                            <small>21 hours ago</small>
                         </div>
 
                     </div>
@@ -363,38 +151,144 @@ const Post = () => {
                         strategy. If you are on first page of all major search engines then you are ahead among your
                         competitors.</p>
 
-                    <img src="./images/post-image-3.png" alt="post image" width="100%" />
+                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
 
-                    <div className="post-stats">
+                    <div className={postCSS.postStats}>
                         <div>
                             <img src="./images/thumbsup.png" alt="img" />
                             <img src="./images/love.png" alt="img" />
                             <img src="./images/clap.png" alt="img" />
-                            <span className="liked-users">Abhinav Mishra and 75 others</span>
+                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
                         </div>
                         <div>
                             <span>22 comments &middot; 40 shares</span>
                         </div>
                     </div>
 
-                    <div className="post-activity">
+                    <div className={postCSS.postActivity}>
                         <div>
-                            <img src="./images/user-3.png" alt="image" className="post-activity-user-icon" />
-                            <img src="./images/down-arrow.png" alt="image" className="post-activity-arrow-icon" />
+                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
+                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/like.png" alt="like" />
                             <span>Like</span>
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/comment.png" alt="comment" />
                             <span>Comment</span>
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/share.png" alt="share" />
                             <span>Share</span>
                         </div>
-                        <div className="post-activity-link">
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/send.png" alt="send" />
+                            <span>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className={postCSS.post}>
+                    <div className={postCSS.postAuthor}>
+                        <img src="./images/user-4.png" alt="user" />
+                        <div>
+                            <h1>Canserio Leo</h1>
+                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small>21 hours ago</small>
+                        </div>
+
+                    </div>
+                    <p>The success of every websites depends on search engine optimization and digital marketing
+                        strategy. If you are on first page of all major search engines then you are ahead among your
+                        competitors.</p>
+
+                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
+
+                    <div className={postCSS.postStats}>
+                        <div>
+                            <img src="./images/thumbsup.png" alt="img" />
+                            <img src="./images/love.png" alt="img" />
+                            <img src="./images/clap.png" alt="img" />
+                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className={postCSS.postActivity}>
+                        <div>
+                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
+                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/like.png" alt="like" />
+                            <span>Like</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/comment.png" alt="comment" />
+                            <span>Comment</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/share.png" alt="share" />
+                            <span>Share</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/send.png" alt="send" />
+                            <span>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className={postCSS.post}>
+                    <div className={postCSS.postAuthor}>
+                        <img src="./images/user-4.png" alt="user" />
+                        <div>
+                            <h1>Canserio Leo</h1>
+                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small>21 hours ago</small>
+                        </div>
+
+                    </div>
+                    <p>The success of every websites depends on search engine optimization and digital marketing
+                        strategy. If you are on first page of all major search engines then you are ahead among your
+                        competitors.</p>
+
+                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
+
+                    <div className={postCSS.postStats}>
+                        <div>
+                            <img src="./images/thumbsup.png" alt="img" />
+                            <img src="./images/love.png" alt="img" />
+                            <img src="./images/clap.png" alt="img" />
+                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className={postCSS.postActivity}>
+                        <div>
+                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
+                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/like.png" alt="like" />
+                            <span>Like</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/comment.png" alt="comment" />
+                            <span>Comment</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
+                            <img src="./images/share.png" alt="share" />
+                            <span>Share</span>
+                        </div>
+                        <div className={postCSS.postActivityLink}>
                             <img src="./images/send.png" alt="send" />
                             <span>Send</span>
                         </div>
@@ -405,10 +299,10 @@ const Post = () => {
 
 
 
-            {/* <!-- right-sidebar  --> */}
-            <div className="right-sidebar">
-                <div className="sidebar-news">
-                    <img src={imgTrend} alt="more" className="more-info-icon" />
+            {/* <!-- rightSidebar  --> */}
+            <div className={postCSS.rightSidebar}>
+                <div className={postCSS.sidebarNews}>
+                    <img src={imgTrend} alt="more" className={postCSS.moreInfoIcon} />
                     <h3>Trending News</h3>
                     <a href="#">High demand for skilled manpower</a>
                     <span>1d ago &middot; 10,934 readers</span>
@@ -425,11 +319,11 @@ const Post = () => {
                     <a href="#">Gautam Adani is the world's third richest</a>
                     <span>12h ago &middot; 4,334 readers</span>
 
-                    <a href="#" className="read-more-link">Read More</a>
+                    <a href="#" className={postCSS.readMoreLink}>Read More</a>
 
                 </div>
 
-                <div className="sidebar-ad">
+                <div className={postCSS.sidebarAd}>
                     <small>Ad &middot; &middot; &middot;</small>
                     <p>Master the 5 principles of web design</p>
                     <div>
@@ -437,10 +331,10 @@ const Post = () => {
                         <img src="./images/mi-logo.png" alt="img" />
                     </div>
                     <b>Brand and Demand in Xiaomi</b>
-                    <a href="#" className="ad-link">Learn More</a>
+                    <a href="#" className={postCSS.adLink}>Learn More</a>
                 </div>
 
-                <div className="sidebar-useful-links">
+                <div className={postCSS.sidebarUsefulLinks}>
                     <a href="#">About</a>
                     <a href="#">Accessibility</a>
                     <a href="#">Help Center</a>
@@ -449,7 +343,7 @@ const Post = () => {
                     <a href="#">Get the App</a>
                     <a href="#">More</a>
 
-                    <div className="copyright-msg">
+                    <div className={postCSS.copyrightMsg}>
                         <img src="./images/logo.png" alt="logo" />
                         <p>Linkedup &#169; 2023. All right reserved</p>
                     </div>
