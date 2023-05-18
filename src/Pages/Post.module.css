@@ -241,38 +241,8 @@ a {
 
 .post {
     background-color: #fff;
-    padding: 20px 25px 5px;
-    margin: 5px 0 15px;
 }
 
-.postAuthor {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-
-.postAuthor img {
-    width: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.postAuthor h1 {
-    font-size: 18px;
-    color: #333;
-    font-weight: 600;
-}
-
-.postAuthor small {
-    font-size: 12px;
-    display: block;
-    margin-bottom: -2px;
-}
-
-.post p {
-    font-size: 14px;
-    margin-bottom: 14px;
-}
 
 .postStats {
     display: flex;
@@ -282,53 +252,6 @@ a {
     border-bottom: 1px solid #ccc;
     font-size: 12px;
     padding-bottom: 6px;
-}
-
-.postStats img {
-    width: 15px;
-    margin-right: -5px;
-}
-
-.postStats div {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.postStats .likedUsers {
-    display: inline-block;
-    margin-left: 13px;
-}
-
-.postActivity {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 0;
-}
-
-.postActivity div {
-    display: flex;
-    align-items: center;
-}
-
-.postActivity .postActivityUserIcon {
-    width: 22px;
-    border-radius: 50%;
-    margin-right: 5px;
-}
-
-.postActivity .postActivityArrowIcon {
-    width: 12px;
-}
-
-.postActivityLink img {
-    width: 20px;
-    margin-right: 8px;
-}
-
-.postActivityLink span {
-    font-size: 14px;
 }
 
 /* right sidebar  */

@@ -1,14 +1,14 @@
 import React from 'react';
 import postCSS from './Post.module.css'
-import imgPhoto from "../Assets/images/photo.png"
-import imgVideo from "../Assets/images/video.png"
-import imgEvent from "../Assets/images/event.png"
 import imgUser from "../Assets/images/user-1.png"
 import imgTrend from "../Assets/images/more.png"
 import imgCover from "../Assets/images/cover-pic.png"
 import imgPost from "../Assets/images/post-image-1.png"
 
-import { BsCameraVideoFill, BsFillCalendarEventFill, BsFillCameraFill, BsFillSendCheckFill, BsSendCheck } from "react-icons/bs";
+import { BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCameraFill, BsSend, BsSendCheck } from "react-icons/bs";
+import { BiCommentDetail, BiLike } from "react-icons/bi";
+import { RiShareForwardLine } from "react-icons/ri";
+import { AiFillCaretDown } from "react-icons/ai";
 
 
 const Post = () => {
@@ -64,7 +64,6 @@ const Post = () => {
 
 
 
-
             {/* <!-- middle  --> */}
             <div className={postCSS.middle}>
 
@@ -83,217 +82,185 @@ const Post = () => {
 
                 <div className={postCSS.sortBy}>
                     <hr />
-                    <p>Sort by: <span>top <img src="./images/down-arrow.png" alt="img" /></span></p>
+                    <p className='flex'>Sort by: <span className='flex items-center'>top <AiFillCaretDown className='ml-1' /></span></p>
                 </div>
 
                 {/* post 1  =================================*/}
-                <div className={postCSS.post}>
-                    <div className={postCSS.postAuthor}>
-                        <img src={imgUser} alt="user" />
-                        <div>
-                            <h1>Canserio Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>21 hours ago</small>
-                        </div>
+                <div className={`mt-1 mb-4 pt-5 px-5 ${postCSS.post}`}>
 
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
                     </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
+
+                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
                         strategy. If you are on first page of all major search engines then you are ahead among your
                         competitors.</p>
 
-                    <img src={imgPost} alt="post image" width="100%" />
+                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
 
                     <div className={postCSS.postStats}>
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
                         </div>
-                        <div>
+                        <div className='flex items-center'>
                             <span>22 comments &middot; 40 shares</span>
                         </div>
                     </div>
 
-                    <div className={postCSS.postActivity}>
-                        <div>
-                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
-                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
                         </div>
                     </div>
                 </div>
 
                 {/* post 2  =================================*/}
-                <div className={postCSS.post}>
-                    <div className={postCSS.postAuthor}>
-                        <img src="./images/user-4.png" alt="user" />
-                        <div>
-                            <h1>Canserio Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>21 hours ago</small>
-                        </div>
+                <div className={`mt-1 mb-4 pt-5 px-5 ${postCSS.post}`}>
 
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
                     </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
+
+                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
                         strategy. If you are on first page of all major search engines then you are ahead among your
                         competitors.</p>
 
-                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
+                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
 
                     <div className={postCSS.postStats}>
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
                         </div>
-                        <div>
+                        <div className='flex items-center'>
                             <span>22 comments &middot; 40 shares</span>
                         </div>
                     </div>
 
-                    <div className={postCSS.postActivity}>
-                        <div>
-                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
-                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
                         </div>
                     </div>
                 </div>
 
                 {/* post 3  =================================*/}
-                <div className={postCSS.post}>
-                    <div className={postCSS.postAuthor}>
-                        <img src="./images/user-4.png" alt="user" />
-                        <div>
-                            <h1>Canserio Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>21 hours ago</small>
-                        </div>
+                <div className={`mt-1 mb-4 pt-5 px-5 ${postCSS.post}`}>
 
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
                     </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
+
+                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
                         strategy. If you are on first page of all major search engines then you are ahead among your
                         competitors.</p>
 
-                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
+                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
 
                     <div className={postCSS.postStats}>
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
                         </div>
-                        <div>
+                        <div className='flex items-center'>
                             <span>22 comments &middot; 40 shares</span>
                         </div>
                     </div>
 
-                    <div className={postCSS.postActivity}>
-                        <div>
-                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
-                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
                         </div>
                     </div>
                 </div>
 
                 {/* post 4  =================================*/}
-                <div className={postCSS.post}>
-                    <div className={postCSS.postAuthor}>
-                        <img src="./images/user-4.png" alt="user" />
-                        <div>
-                            <h1>Canserio Leo</h1>
-                            <small>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small>21 hours ago</small>
-                        </div>
+                <div className={`mt-1 mb-4 pt-5 px-5 ${postCSS.post}`}>
 
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
                     </div>
-                    <p>The success of every websites depends on search engine optimization and digital marketing
+
+                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
                         strategy. If you are on first page of all major search engines then you are ahead among your
                         competitors.</p>
 
-                    <img src="./images/post-image-2.png" alt="post image" width="100%" />
+                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
 
                     <div className={postCSS.postStats}>
-                        <div>
-                            <img src="./images/thumbsup.png" alt="img" />
-                            <img src="./images/love.png" alt="img" />
-                            <img src="./images/clap.png" alt="img" />
-                            <span className={postCSS.likedUsers}>Abhinav Mishra and 75 others</span>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
                         </div>
-                        <div>
+                        <div className='flex items-center'>
                             <span>22 comments &middot; 40 shares</span>
                         </div>
                     </div>
 
-                    <div className={postCSS.postActivity}>
-                        <div>
-                            <img src="./images/user-2.png" alt="image" className={postCSS.postActivityUserIcon} />
-                            <img src="./images/down-arrow.png" alt="image" className={postCSS.postActivityArrowIcon} />
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/like.png" alt="like" />
-                            <span>Like</span>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/comment.png" alt="comment" />
-                            <span>Comment</span>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
                         </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/share.png" alt="share" />
-                            <span>Share</span>
-                        </div>
-                        <div className={postCSS.postActivityLink}>
-                            <img src="./images/send.png" alt="send" />
-                            <span>Send</span>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
                         </div>
                     </div>
                 </div>
