@@ -5,7 +5,6 @@ const Navbar = () => {
 
     const navItem = <React.Fragment>
         <li className='lg:mx-1'><Link to="/">Home</Link></li>
-        <li className=''><Link to="/post">Post</Link></li>
     </React.Fragment>
 
     return (

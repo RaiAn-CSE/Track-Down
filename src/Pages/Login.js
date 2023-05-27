@@ -21,7 +21,7 @@ const Login = () => {
                     </div>
 
                     <div className={LoginCSS.formSwitch}>
-                        <p>Don't have an account? <span className={LoginCSS.formSpan}><Link to='/signup'>Sign up</Link></span></p>
+                        <p className='test-xs'>Don't have an account? <span className={LoginCSS.formSpan}><Link to='/signup'>Sign up</Link></span></p>
                     </div>
 
                     <div><button className={LoginCSS.formBtn}>Continue</button></div>
