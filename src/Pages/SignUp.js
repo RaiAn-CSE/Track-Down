@@ -1,15 +1,21 @@
 import React from 'react';
 import SignUpCSS from './SignUp.module.css'
 import { Link } from 'react-router-dom';
+import Lottie from "lottie-react";
+import SignUpLottie from '../Assets/registration.json'
 
 const SignUp = () => {
     return (
-        <div className={SignUpCSS.formSection}>
-            <div className={SignUpCSS.formBox}>
+        <div className='grid grid-cols-1 lg:grid-cols-2 items-center min-h-screen w-full'>
+            <div className='grid justify-center lg:justify-end'>
+                <div className='h-[250px] lg:h-[500px] w-[250px] lg:w-[500px]'>
+                    <Lottie animationData={SignUpLottie} loop={true} />
+                </div>
+            </div>
 
+            <div className='flex justify-center lg:justify-start'>
                 <form action="">
-                    <h2 className={SignUpCSS.formTitle}>Create your account</h2>
-
+                    <h2 className='text-[32px] text-center text-[#4e4e4e]'>Create your account</h2>
 
                     <div className={SignUpCSS.formGroup}>
                         <input type="text" autoFocus id='' name='' required />
@@ -43,7 +49,6 @@ const SignUp = () => {
                     <div>
                         <button className={SignUpCSS.signInBtn}><img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="" />Continue with Google</button>
                     </div>
-
                 </form>
 
             </div >

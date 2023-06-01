@@ -1,14 +1,21 @@
 import React from 'react';
 import LoginCSS from './Login.module.css'
 import { Link } from 'react-router-dom';
+import Lottie from "lottie-react";
+import LoginLottie from '../Assets/login2.json'
 
 const Login = () => {
     return (
-        <div className={LoginCSS.formSection}>
-            <div className={LoginCSS.formBox}>
+        <div className='grid grid-cols-1 lg:grid-cols-2 items-center min-h-screen w-full'>
+            <div className='grid justify-center lg:justify-end'>
+                <div className='h-[250px] lg:h-[500px] w-[250px] lg:w-[500px]'>
+                    <Lottie animationData={LoginLottie} loop={true} />
+                </div>
+            </div>
 
+            <div className='flex justify-center lg:justify-start'>
                 <form action="">
-                    <h2 className={LoginCSS.formTitle}>Welcome back</h2>
+                    <h2 className='text-[32px] text-center text-[#4e4e4e]'>Welcome back</h2>
 
                     <div className={LoginCSS.formGroup}>
                         <input type="text" autoFocus id='email' name='' required />

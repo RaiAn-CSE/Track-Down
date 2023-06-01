@@ -4,29 +4,6 @@
      padding: 0;
  }
 
-
- .formSection {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     min-height: 100vh;
-     width: 100%;
- }
-
- .formBox {
-     width: 400px;
-     height: 500px;
-     display: flex;
-     justify-content: center;
-     align-items: center;
- }
-
- .formBox h2 {
-     font-size: 2em;
-     text-align: center;
-     color: #4e4e4e;
- }
-
  /* Input Field  */
  .formGroup {
      position: relative;
