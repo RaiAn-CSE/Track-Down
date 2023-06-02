@@ -12,6 +12,7 @@ const PrivateRoute = ({ children }) => {
     if (loading) {
         return <Lottie animationData={LoginLottie} loop={true} />;
     }
+
     if (user) {
         return children;
     }

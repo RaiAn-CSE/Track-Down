@@ -16,7 +16,6 @@ const SignUp = () => {
     const from = location.state?.from?.pathname || "/";
 
     const submitLogin = data => {
-        // console.log(data);
         createUser(data.email, data.password)
             .then((userCredential) => {
                 // Signed in 

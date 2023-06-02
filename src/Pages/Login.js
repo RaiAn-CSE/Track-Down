@@ -6,8 +6,17 @@ import LoginLottie from '../Assets/login2.json'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { AiFillEye } from 'react-icons/ai';
 
 const Login = () => {
+
+
+    // Password hide and Show 
+    const [passwordShown, setPasswordShown] = useState(false);
+    const togglePasswordVisiblity = () => {
+        setPasswordShown(passwordShown ? false : true);
+    };
+
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const [loginError, setLoginError] = useState('');
@@ -60,10 +69,12 @@ const Login = () => {
                     </div>
 
                     <div className={LoginCSS.formGroup}>
-                        <input type="password" id='password' name='' {...register("password", {
+                        <input type={passwordShown ? "text" : "password"} id='password' name='' {...register("password", {
                             minLength: 6
                         })} required />
                         <label className='email-label' htmlFor="password">Password</label>
+                        {/* Password hide and Show */}
+                        <AiFillEye onClick={togglePasswordVisiblity} size={20} className='absolute bottom-[12px] right-[10px]'></AiFillEye>
                     </div>
 
                     <div className={LoginCSS.formSwitch}>
@@ -91,6 +102,7 @@ const Login = () => {
                 </form>
 
             </div >
+
         </div >
     );
 };
