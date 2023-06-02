@@ -1,24 +1,38 @@
 import React, { useContext } from 'react';
 import SignUpCSS from './Login.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import SignUpLottie from '../Assets/registration.json'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const SignUp = () => {
-
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { createUser, updateUser } = useContext(AuthContext);
 
-    const { createUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/";
+
     const submitLogin = data => {
         // console.log(data);
         createUser(data.email, data.password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
+                toast('User Created Successfully...')
+                navigate(from, { replace: true });
                 // ...
                 console.log(user);
+
+                const userInfo = {
+                    displayName: data.name,
+                    // photoURL: "https://example.com/jane-q-user/profile.jpg"
+                }
+                updateUser(userInfo)
+                    .then(() => { })
+                    .catch((error) => { console.log(error); });
             })
             .catch((error) => {
                 const errorCode = error.code;

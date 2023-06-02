@@ -1,18 +1,21 @@
 import React, { useContext, useState } from 'react';
 import LoginCSS from './Login.module.css'
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
 import LoginLottie from '../Assets/login2.json'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../contexts/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const Login = () => {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
     const [loginError, setLoginError] = useState('');
-
     const { signIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
 
     const submitLogin = data => {
         console.log(data);
@@ -23,6 +26,8 @@ const Login = () => {
                 // Signed in 
                 const user = userCredential.user;
                 // ...
+                navigate(from, { replace: true });
+                toast('User Login Successfully...')
                 console.log(user);
             })
             .catch((error) => {

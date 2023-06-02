@@ -11,7 +11,8 @@ const Navbar = () => {
         logOut()
             .then(() => {
                 // Sign-out successful.
-            }).catch((error) => {
+            })
+            .catch((error) => {
                 // An error happened.
                 console.log(error);
             });
@@ -41,7 +42,11 @@ const Navbar = () => {
             </div>
             <div className="navbar-end">
                 {user?.uid ?
-                    <button onClick={handleLogOut} type="button" className="focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-2">Log Out</button>
+                    <>
+                        <Link to='/Dashboard'><button type="button" className="focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-2">Dashboard</button></Link>
+
+                        <button onClick={handleLogOut} type="button" className="focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-2">Log Out</button>
+                    </>
                     :
                     <Link to='/login'><button type="button" className="focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-2">Log in</button></Link>
                 }
