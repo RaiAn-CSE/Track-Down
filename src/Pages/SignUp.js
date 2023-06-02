@@ -1,10 +1,34 @@
-import React from 'react';
-import SignUpCSS from './SignUp.module.css'
+import React, { useContext } from 'react';
+import SignUpCSS from './Login.module.css'
 import { Link } from 'react-router-dom';
 import Lottie from "lottie-react";
 import SignUpLottie from '../Assets/registration.json'
+import { useForm } from 'react-hook-form';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const SignUp = () => {
+
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+
+    const { createUser } = useContext(AuthContext);
+    const submitLogin = data => {
+        // console.log(data);
+        createUser(data.email, data.password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                // ...
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // ..
+                console.log(errorCode);
+                console.log(errorMessage);
+            });
+    }
+
     return (
         <div className='grid grid-cols-1 lg:grid-cols-2 items-center min-h-screen w-full'>
             <div className='grid justify-center lg:justify-end'>
@@ -14,21 +38,21 @@ const SignUp = () => {
             </div>
 
             <div className='flex justify-center lg:justify-start'>
-                <form action="">
+                <form onSubmit={handleSubmit(submitLogin)}>
                     <h2 className='text-[32px] text-center text-[#4e4e4e]'>Create your account</h2>
 
                     <div className={SignUpCSS.formGroup}>
-                        <input type="text" autoFocus id='' name='' required />
+                        <input type="text" autoFocus id='' name='' {...register("name")} required />
                         <label className='' htmlFor="email">Name</label>
                     </div>
 
                     <div className={SignUpCSS.formGroup}>
-                        <input type="text" id='email' name='' required />
+                        <input type="text" id='email' name='' {...register("email")} required />
                         <label className='' htmlFor="email">Email address</label>
                     </div>
 
                     <div className={SignUpCSS.formGroup}>
-                        <input type="password" id='password' name='' required />
+                        <input type="password" id='password' name='' {...register("password")} required />
                         <label className='email-label' htmlFor="password">Password</label>
                     </div>
 
