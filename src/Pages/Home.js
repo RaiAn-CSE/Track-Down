@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from './Home.module.css'
 import imgUser from "../Assets/images/user-1.png"
 import imgTrend from "../Assets/images/more.png"
@@ -8,9 +8,126 @@ import { BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCam
 import { BiCommentDetail, BiLike } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
 import { AiFillCaretDown } from "react-icons/ai";
+import { toast } from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthProvider';
+import { useForm } from 'react-hook-form';
+import PostCard from './AllCards/PostCard';
 
 
 const Home = () => {
+
+    const { register, handleSubmit, formState: { errors } } = useForm()
+
+    const { user, loading, setLoading } = useContext(AuthContext)
+
+    const navigate = useNavigate()
+
+
+    const [postInfo, setPostInfo] = useState([]);
+    useEffect(() => {
+        fetch('http://localhost:5000/posts')
+            .then(res => res.json())
+            .then(data => {
+                setPostInfo(data)
+            })
+    }, []);
+
+    // user info get 
+    const [userInfo, setUserInfo] = useState([]);
+    console.log(userInfo);
+    useEffect(() => {
+        fetch('http://localhost:5000/users')
+            .then(res => res.json())
+            .then(data => {
+                setUserInfo(data)
+            })
+    }, []);
+
+
+    // add item button 
+    const handleItem = (data) => {
+        console.log(data);
+        const img = data.image[0]
+        const { name, price, description } = data;
+
+        const uri = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgBBkey}`
+
+        const formData = new FormData()
+        formData.append('image', img)
+
+        setLoading(true)
+        fetch(uri, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+
+                console.log(imgData);
+                console.log(imgData.status);
+
+                if (imgData.status === 200) {
+
+                    console.log(imgData);
+
+                    const itemInfo = {
+                        description,
+                        image: imgData.data.url,
+                        userEmail: user.email,
+                        userName: user.name,
+                    }
+
+                    console.log(itemInfo);
+
+
+                    fetch(`http://localhost:5000/posts`, {
+                        method: 'POST',
+                        headers: {
+                            'content-type': 'application/json',
+                            // authorization: `Bearer ${localStorage.getItem('phone-token')}`
+                        },
+                        body: JSON.stringify(itemInfo)
+                    })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.acknowledged) {
+                                toast.success("Post added successfully", {
+                                    duration: 4000,
+                                    position: 'top-center'
+                                })
+
+                                // navigate('/dashboard/allItems')
+                            } else {
+                                toast.error("Failed to add data", {
+                                    duration: 4000,
+                                    position: 'top-center'
+                                })
+                            }
+                        })
+                        .catch(error => {
+                            toast.error("Failed to store the postt info", {
+                                duration: 4000,
+                                position: 'top-center'
+                            })
+                        })
+                }
+            })
+            .catch(error => {
+                toast.error("Image upload failed", {
+                    duration: 4000,
+                    position: 'top-center'
+                })
+            })
+
+
+        setLoading(false)
+
+        if (loading) {
+            return "Loading"
+        }
+    }
+
     return (
         <div className={homeCSS.container}>
             {/* <!-- left sidebar  --> */}
@@ -66,16 +183,37 @@ const Home = () => {
             <div className={homeCSS.middle}>
 
                 <div className={homeCSS.createPost}>
-                    <div className={homeCSS.createPostInput}>
-                        <img src={imgUser} alt="user" />
-                        <textarea rows="2" placeholder="write a post"></textarea>
-                    </div>
-                    <div className={homeCSS.createPostLinks}>
-                        <li><BsFillCameraFill size={20} /><span className='ml-2'>Photo</span></li>
-                        <li><BsCameraVideoFill size={20} /><span className='ml-2'>Video</span></li>
-                        <li><BsFillCalendarEventFill size={18} /><span className='ml-2'>Event</span></li>
-                        <li><BsSendCheck size={20} /></li>
-                    </div>
+                    <form onSubmit={handleSubmit(handleItem)}>
+                        <div className={homeCSS.createPostInput}>
+                            <img src={imgUser} alt="user" />
+                            <textarea rows="2" placeholder="write a post" {...register("description")} required></textarea>
+                        </div>
+                        <div className={homeCSS.createPostLinks}>
+                            <li>
+                                <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100">
+                                    <BsFillCameraFill size={20} />
+                                    <span className='ml-2'>Photo</span>
+                                    <input id="dropzone-file" type="file" className="hidden" {...register("image")} required />
+                                </label>
+                            </li>
+                            <li>
+                                <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100">
+                                    <BsCameraVideoFill size={20} />
+                                    <span className='ml-2'>Video</span>
+                                    {<input id="dropzone-file" type="file" className="hidden"
+                                    /* {...register("video")} required */
+                                    />}
+                                </label>
+                            </li>
+                            <li>
+                                <BsFillCalendarEventFill size={18} />
+                                <span className='ml-2'>Event</span>
+                            </li>
+                            <li>
+                                <button><BsSendCheck size={20} /></button>
+                            </li>
+                        </div>
+                    </form>
                 </div>
 
                 <div className={homeCSS.sortBy}>
@@ -128,140 +266,11 @@ const Home = () => {
                     </div>
                 </div>
 
-                {/* post 2  =================================*/}
-                <div className={`mt-1 mb-4 pt-5 px-5 rounded-md ${homeCSS.post}`}>
+                {
+                    postInfo.map(data => <PostCard key={data._id} data={data} userInfo={userInfo} />)
+                }
 
-                    <div className='flex items-start mb-[20px]'>
-                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
-                        <div>
-                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
-                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small className='text-xs block'>21 hours ago</small>
-                        </div>
-                    </div>
 
-                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
-
-                    <div className={homeCSS.postStats}>
-                        <div className='flex items-center'>
-                            <BiLike />
-                            <BsEmojiHeartEyes />
-                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className='flex items-center justify-around py-[15px]'>
-                        <div className='flex items-center'>
-                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BsSend /><span className='text-sm ml-1'>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* post 3  =================================*/}
-                <div className={`mt-1 mb-4 pt-5 px-5 rounded-md ${homeCSS.post}`}>
-
-                    <div className='flex items-start mb-[20px]'>
-                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
-                        <div>
-                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
-                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small className='text-xs block'>21 hours ago</small>
-                        </div>
-                    </div>
-
-                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
-
-                    <div className={homeCSS.postStats}>
-                        <div className='flex items-center'>
-                            <BiLike />
-                            <BsEmojiHeartEyes />
-                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className='flex items-center justify-around py-[15px]'>
-                        <div className='flex items-center'>
-                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BsSend /><span className='text-sm ml-1'>Send</span>
-                        </div>
-                    </div>
-                </div>
-
-                {/* post 4  =================================*/}
-                <div className={`mt-1 mb-4 pt-5 px-5 rounded-md ${homeCSS.post}`}>
-
-                    <div className='flex items-start mb-[20px]'>
-                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
-                        <div>
-                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
-                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small className='text-xs block'>21 hours ago</small>
-                        </div>
-                    </div>
-
-                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
-
-                    <div className={homeCSS.postStats}>
-                        <div className='flex items-center'>
-                            <BiLike />
-                            <BsEmojiHeartEyes />
-                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className='flex items-center justify-around py-[15px]'>
-                        <div className='flex items-center'>
-                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BsSend /><span className='text-sm ml-1'>Send</span>
-                        </div>
-                    </div>
-                </div>
 
             </div>
 

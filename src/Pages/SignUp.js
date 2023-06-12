@@ -6,19 +6,22 @@ import SignUpLottie from '../Assets/registration.json'
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
+import Load from "../Assets/load.json"
 
 const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-    const { createUser, updateUser } = useContext(AuthContext);
+    const { createUser, updateUser, logOut, loading, setLoading, } = useContext(AuthContext);
 
     const location = useLocation();
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || "/";
 
     const submitLogin = data => {
-        createUser(data.email, data.password)
+        console.log(data);
+        const { name, email, password } = data;
+
+        createUser(data.email, data.password, data.name)
             .then((userCredential) => {
-                // Signed in 
                 const user = userCredential.user;
                 toast('User Created Successfully...')
                 navigate(from, { replace: true });
@@ -30,8 +33,57 @@ const SignUp = () => {
                     // photoURL: "https://example.com/jane-q-user/profile.jpg"
                 }
                 updateUser(userInfo)
-                    .then(() => { })
-                    .catch((error) => { console.log(error); });
+                    .then(() => {
+                        const userInfoMongoDb = {
+                            name,
+                            email,
+                            password,
+                        }
+
+                        console.log(userInfoMongoDb);
+
+                        fetch(`http://localhost:5000/users`, {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify(userInfoMongoDb)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+
+                                if (data.acknowledged) {
+
+                                    navigate('/login')
+
+
+                                    logOut()
+                                        .then(() => {
+
+                                        })
+
+                                    toast.success("User registered successfully. Please log in", {
+                                        duration: 4000,
+                                        position: 'top-center'
+                                    })
+
+                                }
+
+                            })
+                            .catch(error => {
+                                toast.error("Errors happened during stored data in the database", {
+                                    duration: 4000,
+                                    position: 'top-center'
+                                })
+                            })
+                            .catch(error => {
+                                toast.error("Errors happened during update the profile", {
+                                    duration: 4000,
+                                    position: 'top-center'
+                                })
+                            })
+                    })
+                    .catch((error) => { console.log(error.message); });
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -40,6 +92,13 @@ const SignUp = () => {
                 console.log(errorCode);
                 console.log(errorMessage);
             });
+        setLoading(false)
+    }
+
+    if (loading) {
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
     }
 
     return (
@@ -56,7 +115,7 @@ const SignUp = () => {
 
                     <div className={SignUpCSS.formGroup}>
                         <input type="text" autoFocus id='' name='' {...register("name")} required />
-                        <label className='' htmlFor="email">Name</label>
+                        <label className='' htmlFor="name">Name</label>
                     </div>
 
                     <div className={SignUpCSS.formGroup}>

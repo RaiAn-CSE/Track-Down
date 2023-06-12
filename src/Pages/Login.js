@@ -13,7 +13,7 @@ const Login = () => {
 
     // Password hide and Show 
     const [passwordShown, setPasswordShown] = useState(false);
-    const togglePasswordVisiblity = () => {
+    const togglePassword = () => {
         setPasswordShown(passwordShown ? false : true);
     };
 
@@ -74,7 +74,7 @@ const Login = () => {
                         })} required />
                         <label className='email-label' htmlFor="password">Password</label>
                         {/* Password hide and Show */}
-                        <AiFillEye onClick={togglePasswordVisiblity} size={20} className='absolute bottom-[12px] right-[10px]'></AiFillEye>
+                        <AiFillEye onClick={togglePassword} size={20} className='absolute bottom-[12px] right-[10px]'></AiFillEye>
                     </div>
 
                     <div className={LoginCSS.formSwitch}>

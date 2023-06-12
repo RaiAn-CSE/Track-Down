@@ -6,6 +6,8 @@ import LoginLottie from '../Assets/login2.json'
 
 
 const PrivateRoute = ({ children }) => {
+
+
     const { user, loading } = useContext(AuthContext);
     const location = useLocation();
 
