@@ -5,7 +5,7 @@ import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
 import imgUser from "../Assets/images/user-1.png"
 import { BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCameraFill, BsSend, BsSendCheck } from 'react-icons/bs';
-import { AiFillDelete } from 'react-icons/ai';
+import { AiFillDelete, AiOutlineCloudUpload } from 'react-icons/ai';
 
 
 const Searching = () => {
@@ -14,7 +14,7 @@ const Searching = () => {
 
     const [image, setImage] = useState(null)
     const [fileName, setFileName] = useState("No selected file")
-    const [fileSize, setFileSize] = useState('')
+    const [fileSize, setFileSize] = useState(0)
 
 
     const handleItem = (data) => {
@@ -165,10 +165,11 @@ const Searching = () => {
                 <form className='flex flex-col justify-center items-center border-amber-600 h-[300px] w-[500px] cursor-pointer border-2 rounded-lg ' onClick={() => document.querySelector(".input-field").click()}>
                     <input type="file" accept='image/*' className='input-field' hidden
                         onChange={({ target: { files } }) => {
-                            console.log(files[0]);
-                            files[0] && setFileName(files[0].name) && setFileSize(files[0].size)
+                            console.log(files);
                             if (files) {
                                 setImage(URL.createObjectURL(files[0]))
+                                setFileName(files[0].name)
+                                setFileSize(files[0].size)
                             }
                         }}
                     />
@@ -177,28 +178,20 @@ const Searching = () => {
                         <img src={image} width={150} height={150} alt={fileName} />
                         :
                         <>
-                            <BsFillCalendarEventFill color='#1475cf' size={60} />
+                            <AiOutlineCloudUpload color='#1475cf' size={70} />
                             <p>Browse Files to upload</p>
                         </>
                     }
                 </form>
-
-
                 <p>File Name : {fileName} File Size : {fileSize}</p>
-
                 <AiFillDelete
                     onClick={() => {
                         setFileName("No selected file");
                         setImage(null);
                         setFileSize("0 bytes");
                     }}
-
                 />
             </div>
-
-
-
-
         </div>
     );
 };
