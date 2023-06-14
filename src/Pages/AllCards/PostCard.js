@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from '../Home.module.css';
 import imgUser from "../../Assets/images/user-1.png"
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { BsEmojiHeartEyes, BsSend } from 'react-icons/bs';
 import { RiShareForwardLine } from 'react-icons/ri';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const PostCard = (data) => {
 
-    // console.log(userInfo);
+    const { user } = useContext(AuthContext);
 
     const { image, description, userEmail, userName } = data.data;
 
@@ -17,7 +18,7 @@ const PostCard = (data) => {
             <div className='flex items-start mb-[20px]'>
                 <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
                 <div>
-                    <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
+                    <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
                     <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
                     <small className='text-xs block'>{userEmail}</small>
                     <small className='text-xs block'>21 hours ago</small>

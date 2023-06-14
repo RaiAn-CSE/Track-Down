@@ -47,14 +47,13 @@
      transform: translateY(6px);
      background: white;
      border-radius: 3px;
-     padding: 0 3px;
+     padding: 0 2px;
+     border: 1px solid #10a37f;
  }
 
  .formGroup label {
      transition: all 0.2s ease-in-out;
  }
-
-
 
 
  /* Button Style  */

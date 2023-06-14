@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const ContactUs = () => {
     return (
-        <section className="text-gray-600 body-font relative min-h-screen">
+        <section className="text-gray-600 body-font relative min-h-screen pt-8 inset-y-0">
 
             <div className="absolute inset-0 bg-gray-300">
                 {<iframe width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="map" scrolling="no" src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=Daffodil%20International%20University%20Campus,%20Dhaka,%20Ashulia&ie=UTF8&t=&z=14&iwloc=B&output=embed" /*style={{ filter: "grayscale(1) contrast(1.2) opacity(0.4)" }}*/></iframe>}
