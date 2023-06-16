@@ -192,6 +192,55 @@ const Searching = () => {
                     }}
                 />
             </div>
+
+
+
+            <div onClick={() => document.querySelector("#input-field").click()} className='bg-green-500 '>
+                <form className='flex flex-col justify-center items-center border-amber-600 h-[300px] w-[500px] cursor-pointer border-2 rounded-lg '>
+
+                    <input type="file" id='input-field' hidden
+                        onChange={({ target: { files } }) => {
+                            console.log(files);
+                            if (files) {
+                                setImage(URL.createObjectURL(files[0]))
+                                setFileName(files[0].name)
+                                setFileSize(files[0].size)
+                            }
+                        }}
+                    />
+                </form>
+                <p>File Name : {fileName} File Size : {fileSize}</p>
+
+                <AiFillDelete
+                    onClick={() => {
+                        setFileName("No selected file");
+                        setImage(null);
+                        setFileSize("0 bytes");
+                    }}
+                />
+            </div>
+            {image ?
+                <img src={image} width={150} height={150} alt={fileName} />
+                :
+                <>
+                    <AiOutlineCloudUpload color='#1475cf' size={70} />
+                    <p>Browse Files to upload</p>
+                </>
+            }
+
+
+            {/* {
+                            image ?
+                                <>
+                                    <div className='flex'>
+                                        <img src={image} width={150} height={150} alt={fileName} />
+                                        <p>File Name : {fileName} File Size : {fileSize}</p>
+                                    </div>
+                                </>
+                                :
+                                <>
+                                </>
+                        } */}
         </div>
     );
 };

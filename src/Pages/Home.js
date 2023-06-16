@@ -7,7 +7,7 @@ import imgPost from "../Assets/images/post-image-1.png"
 import { BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCameraFill, BsSend, BsSendCheck } from "react-icons/bs";
 import { BiCommentDetail, BiLike } from "react-icons/bi";
 import { RiShareForwardLine } from "react-icons/ri";
-import { AiFillCaretDown } from "react-icons/ai";
+import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -17,11 +17,14 @@ import PostCard from './AllCards/PostCard';
 
 const Home = () => {
 
-    const { register, handleSubmit, formState: { errors } } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { user, loading, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
 
-    const { user, loading, setLoading } = useContext(AuthContext)
+    const [image, setImage] = useState(null)
+    const [fileName, setFileName] = useState("No selected file")
+    const [fileSize, setFileSize] = useState(0)
 
-    const navigate = useNavigate()
 
 
     const [postInfo, setPostInfo] = useState([]);
@@ -35,7 +38,7 @@ const Home = () => {
 
     // user info get 
     const [userInfo, setUserInfo] = useState([]);
-    console.log(userInfo);
+    // console.log(userInfo);
     useEffect(() => {
         fetch('http://localhost:5000/users')
             .then(res => res.json())
@@ -187,13 +190,33 @@ const Home = () => {
                         <div className={homeCSS.createPostInput}>
                             <img src={imgUser} alt="user" />
                             <textarea rows="2" placeholder="write a post" {...register("description")} required></textarea>
+                            {
+                                image ?
+                                    <>
+                                        <div className='flex'>
+                                            <img src={image} width={150} height={150} alt={fileName} />
+                                            <p>File Name : {fileName} File Size : {fileSize}</p>
+                                        </div>
+                                    </>
+                                    :
+                                    <>
+                                    </>
+                            }
                         </div>
                         <div className={homeCSS.createPostLinks}>
                             <li>
-                                <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100">
+                                <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100"
+                                    onChange={(event) => {
+                                        console.log(event.target.files);
+                                        if (event.target.files) {
+                                            setImage(URL.createObjectURL(event.target.files[0]))
+                                            setFileName(event.target.files[0].name)
+                                            setFileSize(event.target.files[0].size)
+                                        }
+                                    }}>
                                     <BsFillCameraFill size={20} />
                                     <span className='ml-2'>Photo</span>
-                                    <input id="dropzone-file" type="file" className="hidden" {...register("image")} required />
+                                    <input id="dropzone-file" type="file" hidden {...register("image")} required />
                                 </label>
                             </li>
                             <li>
@@ -205,9 +228,14 @@ const Home = () => {
                                     />}
                                 </label>
                             </li>
-                            <li>
-                                <BsFillCalendarEventFill size={18} />
-                                <span className='ml-2'>Event</span>
+                            <li className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100"
+                            onClick={() => {
+                                setFileName("No selected file");
+                                setImage(null);
+                                setFileSize("0 bytes");
+                            }}>
+                                <AiFillDelete size={20} />
+                                <span className='ml-2'>Delete</span>
                             </li>
                             <li>
                                 <button><BsSendCheck size={20} /></button>
