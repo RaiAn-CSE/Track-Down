@@ -98,10 +98,12 @@ const Home = () => {
                                 toast.success("Post added successfully", {
                                     duration: 4000,
                                     position: 'top-center'
-                                })
 
+                                })
+                                window.location.reload()
                                 // navigate('/dashboard/allItems')
-                            } else {
+                            }
+                            else {
                                 toast.error("Failed to add data", {
                                     duration: 4000,
                                     position: 'top-center'
@@ -252,7 +254,7 @@ const Home = () => {
                     <p className='flex'>Sort by: <span className='flex items-center'>top <AiFillCaretDown className='ml-1' /></span></p>
                 </div>
 
-                {/* post 1  =================================*/}
+                {/* post 1  =================================
                 <div className={`mt-1 mb-4 pt-5 px-5 rounded-md ${homeCSS.post}`}>
 
                     <div className='flex items-start mb-[20px]'>
@@ -295,13 +297,11 @@ const Home = () => {
                             <BsSend /><span className='text-sm ml-1'>Send</span>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
                 {
                     postInfo.map(data => <PostCard key={data._id} data={data} userInfo={userInfo} />)
                 }
-
-
 
             </div>
 
