@@ -162,12 +162,6 @@
     align-items: flex-start;
 }
 
-.createPostInput img {
-    width: 35px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
 .createPostInput textarea {
     border: 0;
     outline: 0;

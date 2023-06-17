@@ -188,20 +188,23 @@ const Home = () => {
                 <div className={homeCSS.createPost}>
                     <form onSubmit={handleSubmit(handleItem)}>
                         <div className={homeCSS.createPostInput}>
-                            <img src={imgUser} alt="user" />
-                            <textarea rows="2" placeholder="write a post" {...register("description")} required></textarea>
+                            <img className='w-[35px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+
                             {
                                 image ?
                                     <>
-                                        <div className='flex'>
-                                            <img src={image} width={150} height={150} alt={fileName} />
-                                            <p>File Name : {fileName} File Size : {fileSize}</p>
+                                        <textarea rows="5" placeholder="write a post" {...register("description")} required></textarea>
+                                        <div className='flex items-center ml-2'>
+                                            <img src={image} className='h-auto max-w-full rounded-lg' alt={fileName} />
+                                            {/* <p>File Name : {fileName} File Size : {fileSize} bytes</p> */}
                                         </div>
                                     </>
                                     :
                                     <>
+                                        <textarea rows="2" placeholder="write a post" {...register("description")} required></textarea>
                                     </>
                             }
+
                         </div>
                         <div className={homeCSS.createPostLinks}>
                             <li>
@@ -229,11 +232,11 @@ const Home = () => {
                                 </label>
                             </li>
                             <li className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100"
-                            onClick={() => {
-                                setFileName("No selected file");
-                                setImage(null);
-                                setFileSize("0 bytes");
-                            }}>
+                                onClick={() => {
+                                    setFileName("No selected file");
+                                    setImage(null);
+                                    setFileSize("0 bytes");
+                                }}>
                                 <AiFillDelete size={20} />
                                 <span className='ml-2'>Delete</span>
                             </li>
