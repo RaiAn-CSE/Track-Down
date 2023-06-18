@@ -3,10 +3,7 @@ import homeCSS from './Home.module.css'
 import imgUser from "../Assets/images/user-1.png"
 import imgTrend from "../Assets/images/more.png"
 import imgCover from "../Assets/images/cover-pic.png"
-import imgPost from "../Assets/images/post-image-1.png"
-import { BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCameraFill, BsSend, BsSendCheck } from "react-icons/bs";
-import { BiCommentDetail, BiLike } from "react-icons/bi";
-import { RiShareForwardLine } from "react-icons/ri";
+import { BsCameraVideoFill, BsFillCameraFill, BsSendCheck } from "react-icons/bs";
 import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -38,7 +35,7 @@ const Home = () => {
 
     // user info get 
     const [userInfo, setUserInfo] = useState([]);
-    // console.log(userInfo);
+
     useEffect(() => {
         fetch('http://localhost:5000/users')
             .then(res => res.json())
@@ -47,10 +44,8 @@ const Home = () => {
             })
     }, []);
 
-
     // add item button 
     const handleItem = (data) => {
-        console.log(data);
         const img = data.image[0]
         const { name, price, description } = data;
 
@@ -67,12 +62,7 @@ const Home = () => {
             .then(res => res.json())
             .then(imgData => {
 
-                console.log(imgData);
-                console.log(imgData.status);
-
                 if (imgData.status === 200) {
-
-                    console.log(imgData);
 
                     const itemInfo = {
                         description,
@@ -80,9 +70,6 @@ const Home = () => {
                         userEmail: user.email,
                         userName: user.name,
                     }
-
-                    console.log(itemInfo);
-
 
                     fetch(`http://localhost:5000/posts`, {
                         method: 'POST',
@@ -133,10 +120,14 @@ const Home = () => {
         }
     }
 
+    if (loading) {
+        return 'Loading'
+    }
+
     return (
-        <div className={homeCSS.container}>
+        <div className='flex justify-between flex-wrap bg-gray-100 text-gray-600 py-[15px] lg:py-[20px] px-[3%] lg:px-[6%] '>
             {/* <!-- left sidebar  --> */}
-            <div className={homeCSS.leftSidebar}>
+            <div className='basis-full lg:basis-1/4 self-start relative lg:sticky top-0 lg:top-[84px]'>
                 <div className={homeCSS.sidebarProfileBox}>
                     <img src={imgCover} alt="cover" width="100%" />
                     <div className={homeCSS.sidebarProfileInfo}>
@@ -185,7 +176,7 @@ const Home = () => {
 
 
             {/* <!-- middle  --> */}
-            <div className={homeCSS.middle}>
+            <div className='basis-full lg:basis-[47%]'>
 
                 <div className={homeCSS.createPost}>
                     <form onSubmit={handleSubmit(handleItem)}>
@@ -212,12 +203,25 @@ const Home = () => {
                             <li>
                                 <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100"
                                     onChange={(event) => {
-                                        console.log(event.target.files);
-                                        if (event.target.files) {
-                                            setImage(URL.createObjectURL(event.target.files[0]))
-                                            setFileName(event.target.files[0].name)
-                                            setFileSize(event.target.files[0].size)
+                                        const file = event.target.files[0];
+
+                                        if (file) {
+                                            const reader = new FileReader();
+                                            // console.log(reader);
+                                            reader.onload = () => {
+                                                setImage(reader.result);
+                                            };
+                                            reader.readAsDataURL(file);
                                         }
+
+
+
+
+                                        // if (file) {
+                                        //     setImage(URL.createObjectURL(file))
+                                        //     setFileName(file.name)
+                                        //     setFileSize(file.size)
+                                        // }
                                     }}>
                                     <BsFillCameraFill size={20} />
                                     <span className='ml-2'>Photo</span>
@@ -254,51 +258,6 @@ const Home = () => {
                     <p className='flex'>Sort by: <span className='flex items-center'>top <AiFillCaretDown className='ml-1' /></span></p>
                 </div>
 
-                {/* post 1  =================================
-                <div className={`mt-1 mb-4 pt-5 px-5 rounded-md ${homeCSS.post}`}>
-
-                    <div className='flex items-start mb-[20px]'>
-                        <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
-                        <div>
-                            <h1 className='text-lg leading-none font-semibold text-black'>Canserio Leo</h1>
-                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
-                            <small className='text-xs block'>21 hours ago</small>
-                        </div>
-                    </div>
-
-                    <p className='text-sm mb-[14px]'>The success of every websites depends on search engine optimization and digital marketing
-                        strategy. If you are on first page of all major search engines then you are ahead among your
-                        competitors.</p>
-
-                    <img className='mb-3' src={imgPost} alt="post image" width="100%" />
-
-                    <div className={homeCSS.postStats}>
-                        <div className='flex items-center'>
-                            <BiLike />
-                            <BsEmojiHeartEyes />
-                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <span>22 comments &middot; 40 shares</span>
-                        </div>
-                    </div>
-
-                    <div className='flex items-center justify-around py-[15px]'>
-                        <div className='flex items-center'>
-                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
-                        </div>
-                        <div className='flex items-center'>
-                            <BsSend /><span className='text-sm ml-1'>Send</span>
-                        </div>
-                    </div>
-                </div> */}
-
                 {
                     postInfo.map(data => <PostCard key={data._id} data={data} userInfo={userInfo} />)
                 }
@@ -308,7 +267,7 @@ const Home = () => {
 
 
             {/* <!-- rightSidebar  --> */}
-            <div className={homeCSS.rightSidebar}>
+            <div className='basis-full lg:basis-1/4 self-start relative lg:sticky top-0 lg:top-[84px]'>
                 <div className={homeCSS.sidebarNews}>
                     <img src={imgTrend} alt="more" className={homeCSS.moreInfoIcon} />
                     <h3>Trending News</h3>

@@ -5,32 +5,7 @@
     font-family: "Poppins", sans-serif;
 }
 
-
-/* main content  */
-
-.container {
-    display: flex;
-    padding: 20px 6% 20px 6%;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    background: #f0f2f5;
-    color: #5f5f5f;
-}
-
-.container a {
-    text-decoration: none;
-    color: #5f5f5f;
-}
-
 /* leftSidebar */
-
-.leftSidebar,
-.rightSidebar {
-    flex-basis: 25%;
-    align-self: flex-start;
-    position: sticky;
-    top: 84px;
-}
 
 .sidebarProfileBox {
     background-color: #fff;
@@ -148,10 +123,6 @@
 
 /* middle  */
 
-.middle {
-    flex-basis: 47%;
-}
-
 .createPost {
     background: #fff;
 }
@@ -161,6 +132,7 @@
     display: flex;
     align-items: flex-start;
 }
+
 
 .createPostInput textarea {
     border: 0;
@@ -228,20 +200,6 @@
     margin-left: 3px;
 }
 
-.post {
-    background-color: #fff;
-}
-
-
-.postStats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    border-bottom: 1px solid #ccc;
-    font-size: 12px;
-    padding-bottom: 6px;
-}
 
 /* right sidebar  */
 
@@ -349,17 +307,6 @@
 
 @media only screen and (max-width: 600px) {
 
-    .container {
-        padding: 15px 3%;
-    }
-
-    .leftSidebar,
-    .rightSidebar {
-        flex-basis: 100%;
-        position: relative;
-        top: unset;
-    }
-
     .middle {
         flex-basis: 100%;
     }
@@ -377,8 +324,4 @@
     .sidebarActivity {
         display: none;
     }
-
-    /* .sidebarActivity.open-activity {
-        display: block;
-    } */
 }

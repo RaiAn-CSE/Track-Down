@@ -3,9 +3,11 @@ import homeCSS from './Home.module.css'
 import { AuthContext } from '../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
-import imgUser from "../Assets/images/user-1.png"
-import { BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCameraFill, BsSend, BsSendCheck } from 'react-icons/bs';
-import { AiFillDelete, AiOutlineCloudUpload } from 'react-icons/ai';
+import userImage from "../Assets/images/user-1.png"
+import { BsArrowBarRight, BsCameraVideoFill, BsEmojiHeartEyes, BsFillCalendarEventFill, BsFillCameraFill, BsSend, BsSendCheck } from 'react-icons/bs';
+import { AiFillDelete, AiOutlineCloudUpload, AiOutlineFileSearch } from 'react-icons/ai';
+import { BiCommentDetail, BiLike } from 'react-icons/bi';
+import { RiShareForwardLine } from 'react-icons/ri';
 
 
 const Searching = () => {
@@ -101,71 +103,11 @@ const Searching = () => {
 
 
     return (
-        <div className={`{homeCSS.middle} bg-[#f0f2f5]`}>
-
-            <div className={homeCSS.createPost}>
-                <form onSubmit={handleSubmit(handleItem)}>
-                    <div className={homeCSS.createPostInput}>
-                        <img src={imgUser} alt="user" />
-                        <textarea rows="2" placeholder="write a post" {...register("description")} required></textarea>
-                    </div>
-                    <div className={homeCSS.createPostLinks}>
-                        <li>
-                            <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100">
-                                <BsFillCameraFill size={20} />
-                                <span className='ml-2'>Photo</span>
-                                <input id="dropzone-file" type="file" className="hidden" {...register("image")} required />
-                            </label>
-                        </li>
-                        <li>
-                            <label htmlFor="dropzone-file" className="flex items-center justify-center w-full h-full  cursor-pointer hover:bg-gray-100">
-                                <BsCameraVideoFill size={20} />
-                                <span className='ml-2'>Video</span>
-                                {<input id="dropzone-file" type="file" className="hidden"
-                                /* {...register("video")} required */
-                                />}
-                            </label>
-                        </li>
-                        <li>
-                            <BsFillCalendarEventFill size={18} />
-                            <span className='ml-2'>Event</span>
-                        </li>
-                        <li>
-                            <button><BsSendCheck size={20} /></button>
-                        </li>
-                    </div>
-                </form>
-            </div>
-
-            <div className={homeCSS.sortBy}>
-                <hr />
-            </div>
-
-            <section className="text-gray-600 body-font">
-                <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-                    <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                        <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" />
-                    </div>
-                    <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                        <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Before they sold out
-                            <br className="hidden lg:inline-block" />readymade gluten
-                        </h1>
-                        <p className="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
-                        <div className="flex justify-center">
-                            <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                            <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-
-            <div className='bg-green-500'>
-                <form className='flex flex-col justify-center items-center border-amber-600 h-[300px] w-[500px] cursor-pointer border-2 rounded-lg ' onClick={() => document.querySelector(".input-field").click()}>
+        <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex items-center justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
+            <div className='basis-full lg:basis-[30%] self-start lg:sticky lg:top-[84px]'>
+                <form className='flex flex-col justify-center items-center border-amber-600 h-auto w-auto cursor-pointer border-2 rounded-lg ' onClick={() => document.querySelector(".input-field").click()}>
                     <input type="file" accept='image/*' className='input-field' hidden
                         onChange={({ target: { files } }) => {
-                            console.log(files);
                             if (files) {
                                 setImage(URL.createObjectURL(files[0]))
                                 setFileName(files[0].name)
@@ -175,7 +117,7 @@ const Searching = () => {
                     />
 
                     {image ?
-                        <img src={image} width={150} height={150} alt={fileName} />
+                        <img className='rounded-lg w-auto h-auto max-h-full' src={image} alt={fileName} />
                         :
                         <>
                             <AiOutlineCloudUpload color='#1475cf' size={70} />
@@ -193,54 +135,188 @@ const Searching = () => {
                 />
             </div>
 
-
-
-            <div onClick={() => document.querySelector("#input-field").click()} className='bg-green-500 '>
-                <form className='flex flex-col justify-center items-center border-amber-600 h-[300px] w-[500px] cursor-pointer border-2 rounded-lg '>
-
-                    <input type="file" id='input-field' hidden
-                        onChange={({ target: { files } }) => {
-                            console.log(files);
-                            if (files) {
-                                setImage(URL.createObjectURL(files[0]))
-                                setFileName(files[0].name)
-                                setFileSize(files[0].size)
-                            }
-                        }}
-                    />
-                </form>
-                <p>File Name : {fileName} File Size : {fileSize}</p>
-
-                <AiFillDelete
-                    onClick={() => {
-                        setFileName("No selected file");
-                        setImage(null);
-                        setFileSize("0 bytes");
-                    }}
-                />
+            <div className='basis-[20%] flex justify-center self-start lg:sticky lg:top-[84px]'>
+                <button class="flex items-center bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 text-white font-medium py-2 px-4 rounded-lg">
+                    <AiOutlineFileSearch size={20} />
+                    Search
+                    <BsArrowBarRight size={20} />
+                </button>
             </div>
-            {image ?
-                <img src={image} width={150} height={150} alt={fileName} />
-                :
-                <>
-                    <AiOutlineCloudUpload color='#1475cf' size={70} />
-                    <p>Browse Files to upload</p>
-                </>
-            }
 
 
-            {/* {
-                            image ?
-                                <>
-                                    <div className='flex'>
-                                        <img src={image} width={150} height={150} alt={fileName} />
-                                        <p>File Name : {fileName} File Size : {fileSize}</p>
-                                    </div>
-                                </>
-                                :
-                                <>
-                                </>
-                        } */}
+
+            <div className='basis-[50%] grid grid-cols-1 lg:grid-cols-2 gap-4 duration-300 ease-in-out hover:gap-2'>
+
+
+                <div className='pt-5 px-5 rounded-md bg-[#fff]'>
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={userImage} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>userEmail</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
+                    </div>
+
+                    <p className='text-sm mb-[14px]'>description</p>
+                    <img className='mb-3' src={userImage} alt="post image" width="100%" />
+
+
+                    <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='pt-5 px-5 rounded-md bg-[#fff]'>
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={userImage} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>userEmail</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
+                    </div>
+
+                    <p className='text-sm mb-[14px]'>description</p>
+                    <img className='mb-3' src={userImage} alt="post image" width="100%" />
+
+
+                    <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='pt-5 px-5 rounded-md bg-[#fff]'>
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={userImage} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>userEmail</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
+                    </div>
+
+                    <p className='text-sm mb-[14px]'>description</p>
+                    <img className='mb-3' src={userImage} alt="post image" width="100%" />
+
+
+                    <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='pt-5 px-5 rounded-md bg-[#fff]'>
+                    <div className='flex items-start mb-[20px]'>
+                        <img className='w-[40px] rounded-full mr-[10px]' src={userImage} alt="user" />
+                        <div>
+                            <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
+                            <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
+                            <small className='text-xs block'>userEmail</small>
+                            <small className='text-xs block'>21 hours ago</small>
+                        </div>
+                    </div>
+
+                    <p className='text-sm mb-[14px]'>description</p>
+                    <img className='mb-3' src={userImage} alt="post image" width="100%" />
+
+
+                    <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
+                        <div className='flex items-center'>
+                            <BiLike />
+                            <BsEmojiHeartEyes />
+                            <span className='block ml-1'>Abhinav Mishra and 75 others</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <span>22 comments &middot; 40 shares</span>
+                        </div>
+                    </div>
+
+                    <div className='flex items-center justify-around py-[15px]'>
+                        <div className='flex items-center'>
+                            <BiLike size={18} /><span className='text-sm ml-1'>Like</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BiCommentDetail size={17} /><span className='text-sm ml-1'>Comment</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <RiShareForwardLine size={20} /><span className='text-sm ml-1'>Share</span>
+                        </div>
+                        <div className='flex items-center'>
+                            <BsSend /><span className='text-sm ml-1'>Send</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
     );
 };

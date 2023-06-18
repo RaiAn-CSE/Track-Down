@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-import homeCSS from '../Home.module.css';
 import imgUser from "../../Assets/images/user-1.png"
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { BsEmojiHeartEyes, BsSend } from 'react-icons/bs';
@@ -13,7 +12,7 @@ const PostCard = (data) => {
     const { image, description, userEmail, userName } = data.data;
 
     return (
-        <div className={`mt-1 mb-4 pt-5 px-5 rounded-md ${homeCSS.post}`}>
+        <div className={`mt-1 mb-4 pt-5 px-5 rounded-md bg-[#fff]`}>
 
             <div className='flex items-start mb-[20px]'>
                 <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
@@ -25,11 +24,12 @@ const PostCard = (data) => {
                 </div>
             </div>
 
-            <p className='text-sm mb-[14px]'>{description}</p>
 
+            <p className='text-sm mb-[14px]'>{description}</p>
             <img className='mb-3' src={image} alt="post image" width="100%" />
 
-            <div className={homeCSS.postStats}>
+
+            <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
                 <div className='flex items-center'>
                     <BiLike />
                     <BsEmojiHeartEyes />
