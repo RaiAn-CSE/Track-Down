@@ -246,9 +246,9 @@ const Home = () => {
                                 <AiFillDelete size={20} />
                                 <span className='ml-2'>Delete</span>
                             </li>
-                            <li>
-                                <button><BsSendCheck size={20} /></button>
-                            </li>
+
+                            <button className='basis-[25%] flex justify-center items-center h-[40px] bg-[#10a37f] text-[white] hover:bg-[#108d6d]' type='submit'><BsSendCheck size={20} /></button>
+
                         </div>
                     </form>
                 </div>

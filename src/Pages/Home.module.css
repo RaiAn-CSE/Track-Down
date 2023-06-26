@@ -159,18 +159,8 @@
     flex-basis: 25%;
     height: 40px;
     cursor: pointer;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    border: 1px solid #ccc;
     font-size: 13px;
-}
-
-.createPostLinks li:last-child {
-    background: #10a37f;
-    color: #fff;
-}
-
-.createPostLinks li:last-child:hover {
-    background: #108d6d;
 }
 
 .sortBy {
