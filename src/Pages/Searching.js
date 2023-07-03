@@ -7,6 +7,7 @@ import { AiFillDelete, AiOutlineCloudUpload, AiOutlineFileSearch } from 'react-i
 import { FaCloudUploadAlt } from 'react-icons/fa';
 import axios from 'axios';
 import SearchPostCard from './AllCards/SearchPostCard';
+import ImageComparison from './ImageComparison';
 
 const Searching = () => {
     const { user, loading, setLoading } = useContext(AuthContext);
@@ -80,9 +81,7 @@ const Searching = () => {
         }
     };
 
-
-    console.log(imageSearch);
-
+    // console.log(imageSearch);
 
     return (
         <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex items-center justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
@@ -132,13 +131,16 @@ const Searching = () => {
                 <div className='my-2'>
                     {
                         imageSearch &&
-                        <img className='rounded-lg w-auto h-auto max-h-full' src={imageSearch.image} alt={fileName} />
+                        <>
+                            <img className='rounded-lg w-auto h-auto max-h-full' src={imageSearch.image} alt={fileName} />
+                            <ImageComparison imageS={imageSearch.image}></ImageComparison>
+                        </>
                     }
                 </div>
 
 
                 <div className='flex justify-center self-start lg:sticky lg:top-[84px]'>
-                    <button class="flex items-center bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 text-white font-medium py-2 px-4 rounded-lg">
+                    <button className="flex items-center bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 text-white font-medium py-2 px-4 rounded-lg">
                         <AiOutlineFileSearch size={20} />
                         Search
                         <BsArrowBarRight size={20} />
@@ -154,7 +156,13 @@ const Searching = () => {
                 }
 
             </div>
-        </div>
+
+            {/* <div>
+                {
+                    posts && posts.map((post, idx) => <ImageComparison post={post} key={idx} />)
+                }
+            </div> */}
+        </div >
     );
 };
 
