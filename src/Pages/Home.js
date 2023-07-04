@@ -21,10 +21,9 @@ const Home = () => {
     const [image, setImage] = useState(null)
     const [fileName, setFileName] = useState("No selected file")
     const [fileSize, setFileSize] = useState(0)
-
-
-
     const [postInfo, setPostInfo] = useState([]);
+
+
     useEffect(() => {
         fetch('http://localhost:5000/posts')
             .then(res => res.json())
@@ -114,10 +113,6 @@ const Home = () => {
 
 
         setLoading(false)
-
-        if (loading) {
-            return "Loading"
-        }
     }
 
     if (loading) {

@@ -4,11 +4,9 @@ import { BsEmojiHeartEyes, BsSend } from 'react-icons/bs';
 import { RiShareForwardLine } from 'react-icons/ri';
 import userImage from "../../Assets/images/user-1.png"
 
-const SearchPostCard = ({ imageSearch, post: { image, description } }) => {
+const SearchPostCard = ({ findImg }) => {
 
-    // console.log(imageSearch);
-    // console.log(image);
-
+    console.log(findImg);
 
     return (
         <div className='pt-5 px-5 rounded-md bg-[#fff]'>
@@ -22,8 +20,8 @@ const SearchPostCard = ({ imageSearch, post: { image, description } }) => {
                 </div>
             </div>
 
-            <p className='text-sm mb-[14px]'>{description}</p>
-            <img className='mb-3' src={image} alt="post image" width="100%" />
+            <p className='text-sm mb-[14px]'>Hello </p>
+            <img className='mb-3' src={findImg} alt="post image" width="100%" />
 
 
             <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
