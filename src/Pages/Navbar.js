@@ -14,8 +14,6 @@ const Navbar = () => {
             <Link to='/searching'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2">Searching</button></Link>
 
             <Link to='/contactUs'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2">Contact Us</button></Link>
-
-            <Link to='/imageComparison'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2">Image Comparison</button></Link>
         </nav>
     </React.Fragment>
 

@@ -8,8 +8,8 @@ import { FaCloudUploadAlt } from 'react-icons/fa';
 import axios from 'axios';
 import SearchPostCard from './AllCards/SearchPostCard';
 import * as faceapi from 'face-api.js';
-// import picture1 from '../Assets/images/id-card.png';
-// import picture2 from '../Assets/images/selfie.webp';
+import Lottie from "lottie-react"
+import Load from "../Assets/load.json"
 
 
 const Searching = () => {
@@ -24,9 +24,6 @@ const Searching = () => {
     const [allPostImg, setAllPostImg] = useState(null);
     const [processingStarted, setProcessingStarted] = useState(false);
     const [findImage, setFindImage] = useState(null);
-
-
-    // console.log(findImage);
 
     useEffect(() => {
         axios.get('http://localhost:5000/posts')
@@ -91,7 +88,7 @@ const Searching = () => {
     };
 
 
-    // Image Processing Start=============================================================================== :
+    // ==============================<<<///Image Processing Start///>>>==================================== //
     const renderFace = async (imageElement, x, y, width, height) => {
         const canvas = document.createElement("canvas");
         canvas.width = width;
@@ -103,9 +100,7 @@ const Searching = () => {
             imageElement.src = URL.createObjectURL(blob);
         }, "image/jpeg");
     };
-
-    // console.log(imageSearch);
-
+    setLoading(true);
     useEffect(() => {
         if (processingStarted) {
             (async () => {
@@ -130,37 +125,37 @@ const Searching = () => {
                     selfieImageElement.src = imageURL;
 
                     // Detect a single face from the ID card image
-                    const idCardFacedetection = await faceapi.detectSingleFace(idCardImageElement,
+                    const idCardFaceDetection = await faceapi.detectSingleFace(idCardImageElement,
                         new faceapi.TinyFaceDetectorOptions())
                         .withFaceLandmarks()
                         .withFaceDescriptor();
 
                     // Detect a single face from the selfie image
-                    const selfieFacedetection = await faceapi.detectSingleFace(selfieImageElement,
+                    const selfieFaceDetection = await faceapi.detectSingleFace(selfieImageElement,
                         new faceapi.TinyFaceDetectorOptions())
                         .withFaceLandmarks()
                         .withFaceDescriptor();
 
                     // Render the detected face from the ID card image
-                    if (idCardFacedetection) {
-                        const { x, y, width, height } = idCardFacedetection.detection.box;
+                    if (idCardFaceDetection) {
+                        const { x, y, width, height } = idCardFaceDetection.detection.box;
                         renderFace(idCardImageElement, x, y, width, height);
                     }
 
                     // Render the detected face from the selfie image
-                    if (selfieFacedetection) {
-                        const { x, y, width, height } = selfieFacedetection.detection.box;
+                    if (selfieFaceDetection) {
+                        const { x, y, width, height } = selfieFaceDetection.detection.box;
                         renderFace(selfieImageElement, x, y, width, height);
                     }
 
                     // Perform face comparison if faces were detected
-                    if (idCardFacedetection && selfieFacedetection) {
+                    if (idCardFaceDetection && selfieFaceDetection) {
                         const distance = faceapi.euclideanDistance(
-                            idCardFacedetection.descriptor,
-                            selfieFacedetection.descriptor
+                            idCardFaceDetection.descriptor,
+                            selfieFaceDetection.descriptor
                         );
-                        console.log(imageURL);
-                        console.log(distance);
+
+                        // console.log(distance);
                         if (distance < 0.55) {
                             setFindImage((prevFindImage) => {
                                 if (Array.isArray(prevFindImage)) {
@@ -171,22 +166,21 @@ const Searching = () => {
                         }
                     }
                 })
-
             })();
         }
     }, [processingStarted, allPostImg, imageSearch?.image]);
-    // Image Processing End =================================== ....
-
+    setLoading(false);
+    // ==============================<<<///Image Processing End///>>>==================================== //
 
     const handleStartProcessing = () => {
         setProcessingStarted(true);
     };
 
-
     if (loading) {
-        return 'Loading'
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
     }
-
     return (
         <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex items-center justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
 

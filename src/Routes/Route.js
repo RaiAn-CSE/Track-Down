@@ -7,7 +7,6 @@ import Dashboard from "../Pages/Dashboard.js";
 import PrivateRoute from "./PrivateRoute.js";
 import ContactUs from "../Pages/ContactUs.js";
 import Searching from "../Pages/Searching.js";
-import ImageComparison from "../Pages/ImageComparison.js";
 
 const router = createBrowserRouter([
     {
@@ -33,10 +32,6 @@ const router = createBrowserRouter([
             {
                 path: "/searching",
                 element: <Searching />
-            },
-            {
-                path: "/imageComparison",
-                element: <ImageComparison />
             }
         ]
     },

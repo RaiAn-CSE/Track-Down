@@ -6,7 +6,7 @@ import userImage from "../../Assets/images/user-1.png"
 
 const SearchPostCard = ({ findImg }) => {
 
-    console.log(findImg);
+    // console.log(findImg);
 
     return (
         <div className='pt-5 px-5 rounded-md bg-[#fff]'>
@@ -21,7 +21,7 @@ const SearchPostCard = ({ findImg }) => {
             </div>
 
             <p className='text-sm mb-[14px]'>Hello </p>
-            <img className='mb-3' src={findImg} alt="post image" width="100%" />
+            <img className='mb-3' src={findImg} alt="Post_img" width="100%" />
 
 
             <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>

@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
 import PostCard from './AllCards/PostCard';
+import Lottie from "lottie-react"
+import Load from "../Assets/load.json"
 
 
 const Home = () => {
@@ -116,7 +118,9 @@ const Home = () => {
     }
 
     if (loading) {
-        return 'Loading'
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
     }
 
     return (
