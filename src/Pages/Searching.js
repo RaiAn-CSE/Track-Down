@@ -235,13 +235,17 @@ const Searching = () => {
                     }
                 </div>
 
-
-                <div onClick={handleStartProcessing} className='flex justify-center self-start lg:sticky lg:top-[84px]'>
-                    <button className="flex items-center bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 text-white font-medium py-2 px-4 rounded-lg">
-                        <AiOutlineFileSearch size={20} />
-                        Search
-                        <BsArrowBarRight size={20} />
-                    </button>
+                <div className='flex justify-center self-start lg:sticky lg:top-[84px]'>
+                    {
+                        imageSearch &&
+                        <>
+                            <button onClick={handleStartProcessing} className="flex items-center bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 text-white font-medium py-2 px-4 rounded-lg">
+                                <AiOutlineFileSearch size={20} />
+                                Search
+                                <BsArrowBarRight size={20} />
+                            </button>
+                        </>
+                    }
                 </div>
             </div>
 
