@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
-import imgUser from "../Assets/images/user-1.png"
+import { GiPlagueDoctorProfile } from 'react-icons/gi';
 
 const Navbar = () => {
 
@@ -53,8 +53,8 @@ const Navbar = () => {
                         user?.uid ?
                             <>
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-10 rounded-full">
-                                        <img src={imgUser} alt="user img" />
+                                    <div className="rounded-full">
+                                        <GiPlagueDoctorProfile color="#10a37f" size={40} />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 top-[80%]">

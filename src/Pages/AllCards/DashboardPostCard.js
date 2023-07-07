@@ -1,20 +1,11 @@
 import React from 'react';
 
-const DashboardPostCard = ({ post, handleDelete, handleAdvertise }) => {
+const DashboardPostCard = ({ post, handleDelete }) => {
 
     const { description, image, userEmail } = post;
 
     return (
         <tr>
-
-            <td>
-
-                <div>
-                    <div className="font-bold">{description}</div>
-
-                </div>
-
-            </td>
             <td>
                 <div className="avatar">
                     <div className="w-24 rounded-xl">
@@ -23,11 +14,16 @@ const DashboardPostCard = ({ post, handleDelete, handleAdvertise }) => {
                 </div>
 
             </td>
+            <td>
+                <div>
+                    <div className="font-bold">{description}</div>
+                </div>
+            </td>
+
             <td>{userEmail}</td>
-            {/* <th>
-                <button onClick={() => handleAdvertise(product._id)} className="btn bg-boldGreen text-white btn-ghost btn-xs" disabled={product?.advertise}>Advertise</button>
-                <button onClick={() => handleDelete(product._id)} className="btn btn-error text-white ml-4 btn-xs">Delete</button>
-            </th> */}
+            <th>
+                <button onClick={() => handleDelete(post._id)} className="btn btn-error text-white ml-4 btn-xs">Delete</button>
+            </th>
         </tr>
     );
 };
