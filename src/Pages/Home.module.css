@@ -5,69 +5,13 @@
     font-family: "Poppins", sans-serif;
 }
 
-/* leftSidebar */
-
-.sidebarProfileBox {
-    background-color: #fff;
-    padding: 0 0 20px;
-}
-
-
-.sidebarActivity {
-    background-color: #fff;
-    margin: 12px 0;
-    padding: 5px 20px;
-}
-
-.sidebarActivity h3 {
-    color: #777;
-    font-weight: 500;
-    font-size: 14px;
-    margin: 20px 0 10px;
-}
-
-.sidebarActivity a {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-    font-size: 14px;
-}
-
-.sidebarActivity a img {
-    width: 20px;
-    margin-right: 10px;
-}
-
-.discoverMoreLink {
-    border-top: 1px solid #ccc;
-    margin-top: 20px;
-    margin-left: -20px;
-    margin-right: -20px;
-    text-align: center;
-}
-
-.discoverMoreLink a {
-    color: #045be6;
-    display: inline-block;
-    margin: 10px 0;
-}
-
-#showMoreActivity {
-    display: none;
-}
-
 /* middle  */
-
-.createPost {
-    background: #fff;
-}
 
 .createPostInput {
     padding: 20px 25px 10px;
     display: flex;
     align-items: flex-start;
 }
-
 
 .createPostInput textarea {
     border: 0;
@@ -96,52 +40,4 @@
     cursor: pointer;
     border: 1px solid #ccc;
     font-size: 13px;
-}
-
-.sortBy {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.sortBy hr {
-    height: 1px;
-    background: #ccc;
-    border: 0;
-    flex-grow: 1;
-}
-
-.sortBy p {
-    font-size: 13px;
-    padding-left: 5px;
-}
-
-.sortBy p span {
-    font-weight: 600;
-}
-
-.sortBy p span img {
-    width: 12px;
-    margin-left: 3px;
-}
-
-@media only screen and (max-width: 600px) {
-
-    .middle {
-        flex-basis: 100%;
-    }
-
-    .postActivityLink span {
-        display: none;
-    }
-
-    #showMoreActivity {
-        display: block;
-        width: fit-content;
-        margin: 10px auto;
-    }
-
-    .sidebarActivity {
-        display: none;
-    }
 }

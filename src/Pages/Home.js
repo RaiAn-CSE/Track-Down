@@ -23,11 +23,9 @@ const Home = () => {
 
     const [image, setImage] = useState(null)
     const [fileName, setFileName] = useState("No selected file")
-    const [fileSize, setFileSize] = useState(0)
     const [postInfo, setPostInfo] = useState([]);
 
     console.log(postInfo);
-
 
     useEffect(() => {
         fetch('http://localhost:5000/posts')
@@ -130,7 +128,7 @@ const Home = () => {
         <div className='flex justify-between flex-wrap bg-gray-100 text-gray-600 py-[15px] lg:py-[20px] px-[3%] lg:px-[6%] '>
             {/* <!-- left sidebar  --> */}
             <div className='basis-full lg:basis-1/4 self-start relative lg:sticky top-0 lg:top-[84px]'>
-                <div className={homeCSS.sidebarProfileBox}>
+                <div className='bg-white'>
                     <img src={imgCover} alt="cover" width="100%" />
                     <div className='px-5'>
                         <img className='w-20 bg-white rounded-full -mt-9 p-1' src={user?.photoURL} alt="profile" />
@@ -169,13 +167,13 @@ const Home = () => {
 
                 <div className="bg-white p-4 my-4 text-center text-xs">
                     <small className="float-right font-medium">Ad &middot; &middot; &middot;</small>
-                    <p className="mt-8 mb-2">Master the 5 principles of web design</p>
+                    <p className="mt-2 mb-2">Master the 5 principles of web design</p>
                     <div className="flex justify-center">
-                        <img src="./images/user-1.png" alt="img" className="w-10 rounded-full m-1" />
-                        <img src="./images/mi-logo.png" alt="img" className="w-10 rounded-full m-1" />
+                        <img src="https://classyprice.com.bd/images/Xiaomi-Mi-10-Ultra.jpg" alt="img" className="w-20 rounded-full m-1" />
+                        <img src="https://raigadget.com/wp-content/uploads/2021/07/Untitled-design-2-51.png" alt="img" className="w-20 rounded-full m-1" />
                     </div>
                     <b className="block mt-4 font-medium">Brand and Demand in Xiaomi</b>
-                    <Link to='#' className="inline-block text-[#10a37f] border border-[#10a37f] rounded-full py-1 px-4 mt-6 font-medium">
+                    <Link to='#' className="inline-block text-[#10a37f] border border-[#10a37f] rounded-full py-1 px-4 mt-6 font-medium hover:underline">
                         Learn More
                     </Link>
                 </div>
@@ -188,7 +186,7 @@ const Home = () => {
             {/* <!-- middle  --> */}
             <div className='basis-full lg:basis-[47%]'>
 
-                <div className={homeCSS.createPost}>
+                <div className='bg-white'>
                     <form onSubmit={handleSubmit(handleItem)}>
                         <div className={homeCSS.createPostInput}>
                             <img className='w-[35px] rounded-full mr-[10px]' src={user?.photoURL} alt="user" />
@@ -225,8 +223,6 @@ const Home = () => {
                                         }
 
 
-
-
                                         // if (file) {
                                         //     setImage(URL.createObjectURL(file))
                                         //     setFileName(file.name)
@@ -251,7 +247,6 @@ const Home = () => {
                                 onClick={() => {
                                     setFileName("No selected file");
                                     setImage(null);
-                                    setFileSize("0 bytes");
                                 }}>
                                 <AiFillDelete size={20} />
                                 <span className='ml-2'>Delete</span>
@@ -263,9 +258,9 @@ const Home = () => {
                     </form>
                 </div>
 
-                <div className={homeCSS.sortBy}>
-                    <hr />
-                    <p className='flex'>Sort by: <span className='flex items-center'>top <AiFillCaretDown className='ml-1' /></span></p>
+                <div className="flex items-center my-3">
+                    <hr className="h-[1.5px] bg-gray-300 flex-grow" />
+                    <p className='flex text-sm ml-1'>Sort by: <span className='flex items-center font-semibold'>top <AiFillCaretDown className='ml-1' /></span></p>
                 </div>
 
                 {
@@ -281,7 +276,7 @@ const Home = () => {
                 <div className="bg-white p-4">
                     <div className='flex justify-between items-center mb-4'>
                         <h3 className="text-base font-semibold text-gray-700">Trending News</h3>
-                        <BiTrendingUp color='#10a37f' size={20} />
+                        <BiTrendingUp color='#10a37f' size={30} />
                     </div>
 
                     <Link to='#' className="block text-xs font-semibold mt-2">High demand for skilled manpower</Link>
