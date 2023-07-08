@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from './Home.module.css'
 import imgTrend from "../Assets/images/more.png"
 import imgCover from "../Assets/images/cover-pic.png"
-import { BsCameraVideoFill, BsFillCameraFill, BsSendCheck } from "react-icons/bs";
+import { BsCameraVideoFill, BsFillCameraFill, BsFillHouseCheckFill, BsSendCheck } from "react-icons/bs";
 import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
+import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -11,6 +12,7 @@ import { useForm } from 'react-hook-form';
 import PostCard from './AllCards/PostCard';
 import Lottie from "lottie-react"
 import Load from "../Assets/load.json"
+import premiumImg from '../Assets/Logo/premiumImg.png'
 
 
 const Home = () => {
@@ -138,27 +140,28 @@ const Home = () => {
                             <ul className="list-none space-y-2">
                                 <li className="w-full text-sm flex justify-between">
                                     Your profile views
-                                    <span className="text-blue-500">52</span>
+                                    <span className="text-[#10a37f]">52</span>
                                 </li>
                                 <li className="w-full text-sm flex justify-between">
                                     Your post views
-                                    <span className="text-blue-500">810</span>
+                                    <span className="text-[#10a37f]">810</span>
                                 </li>
                                 <li className="w-full text-sm flex justify-between">
                                     Your connections
-                                    <span className="text-blue-500 mb-3">205</span>
+                                    <span className="text-[#10a37f] mb-3">205</span>
                                 </li>
                             </ul>
                         </div>
                     </div>
 
                     <div className="flex items-center border border-gray-300">
-                        <Link href="#" className="flex items-center py-4 px-2 text-sm w-1/2">
-                            <img src="./images/items.png" alt="" className="w-5 mr-2" />
+                        <Link to='' className="flex items-center justify-center py-4 px-2 text-sm w-1/2">
+                            <BsFillHouseCheckFill className='mr-1' size={20} />
                             My Items
                         </Link>
-                        <Link href="#" className="flex items-center py-4 px-2 border-l border-gray-300 text-sm w-1/2">
-                            <img src="./images/premium.png" alt="" className="w-5 mr-2" />
+                        <Link to='' className="flex items-center justify-center py-4 px-2 border-l border-gray-300 text-sm w-1/2">
+                            {/* <MdOutlineWorkspacePremium className='mr-1' size={20} /> */}
+                            <img width={23} className='mr-1' src={premiumImg} alt="" />
                             Try premium
                         </Link>
                     </div>
