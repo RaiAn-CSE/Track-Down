@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
 import { Navigate, useLocation } from 'react-router-dom';
 import Lottie from "lottie-react";
-import LoginLottie from '../Assets/login2.json'
+import lottieLoad from '../Assets/load.json'
 
 
 const PrivateRoute = ({ children }) => {
@@ -12,7 +12,10 @@ const PrivateRoute = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <Lottie animationData={LoginLottie} loop={true} />;
+        return <div className='h-[500px] w-[500px] mx-auto'>
+            <Lottie animationData={lottieLoad} loop={true} />
+            <p className='text-center text-3xl font-bold text-[#10a37f]'>Please Wait...</p>
+        </div>
     }
 
     if (user) {

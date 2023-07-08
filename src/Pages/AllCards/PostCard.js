@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
-import imgUser from "../../Assets/images/user-1.png"
+import React, { useContext } from 'react';
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { BsEmojiHeartEyes, BsSend } from 'react-icons/bs';
 import { RiShareForwardLine } from 'react-icons/ri';
@@ -9,15 +8,15 @@ const PostCard = (data) => {
 
     const { user } = useContext(AuthContext);
 
-    const { image, description, userEmail, userName } = data.data;
+    const { image, profileImg, userName, description, userEmail } = data.data;
 
     return (
         <div className={`mt-1 mb-4 pt-5 px-5 rounded-md bg-[#fff]`}>
 
             <div className='flex items-start mb-[20px]'>
-                <img className='w-[40px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+                <img className='w-[40px] rounded-full mr-[10px]' src={profileImg} alt="user" />
                 <div>
-                    <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
+                    <h1 className='text-lg leading-none font-semibold text-black'>{userName}</h1>
                     <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
                     <small className='text-xs block'>{userEmail}</small>
                     <small className='text-xs block'>21 hours ago</small>
@@ -26,7 +25,7 @@ const PostCard = (data) => {
 
 
             <p className='text-sm mb-[14px]'>{description}</p>
-            <img className='mb-3' src={image} alt="post image" width="100%" />
+            <img className='mb-3' src={image} alt="Post img" width="100%" />
 
 
             <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>

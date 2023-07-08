@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import LoginCSS from './Login.module.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Lottie from "lottie-react";
-import LoginLottie from '../Assets/login2.json'
+import LoginLottie from '../Assets/load.json'
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';

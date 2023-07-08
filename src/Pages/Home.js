@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from './Home.module.css'
-import imgUser from "../Assets/images/user-1.png"
 import imgTrend from "../Assets/images/more.png"
 import imgCover from "../Assets/images/cover-pic.png"
 import { BsCameraVideoFill, BsFillCameraFill, BsSendCheck } from "react-icons/bs";
@@ -12,7 +11,6 @@ import { useForm } from 'react-hook-form';
 import PostCard from './AllCards/PostCard';
 import Lottie from "lottie-react"
 import Load from "../Assets/load.json"
-import { BiLinkAlt } from 'react-icons/bi';
 
 
 const Home = () => {
@@ -25,6 +23,8 @@ const Home = () => {
     const [fileName, setFileName] = useState("No selected file")
     const [fileSize, setFileSize] = useState(0)
     const [postInfo, setPostInfo] = useState([]);
+
+    console.log(postInfo);
 
 
     useEffect(() => {
@@ -70,6 +70,8 @@ const Home = () => {
                         description,
                         image: imgData.data.url,
                         userEmail: user.email,
+                        profileImg: user.photoURL,
+                        userName: user.displayName,
                     }
 
                     fetch(`http://localhost:5000/posts`, {
@@ -116,9 +118,10 @@ const Home = () => {
     }
 
     if (loading) {
-        return <>
-            <Lottie animationData={Load} loop={true} className="h-[600px]" />
-        </>
+        return <div className='h-[500px] w-[500px] mx-auto'>
+            <Lottie animationData={Load} loop={true} />
+            <p className='text-center text-3xl font-bold text-[#10a37f]'>Please Wait...</p>
+        </div>
     }
 
     return (
@@ -131,19 +134,19 @@ const Home = () => {
                         <img className='w-20 bg-white rounded-full -mt-9 p-1' src={user?.photoURL} alt="profile" />
                         <h1 className='text-base font-semibold text-gray-700'>{user?.displayName}</h1>
                         <h3 className='text-sm font-medium text-gray-500 my-1'>Web developer at DoReDo Service</h3>
-                        <div class="mt-5">
-                            <ul class="list-none space-y-2">
-                                <li class="w-full text-sm flex justify-between">
+                        <div className="mt-5">
+                            <ul className="list-none space-y-2">
+                                <li className="w-full text-sm flex justify-between">
                                     Your profile views
-                                    <span class="text-blue-500">52</span>
+                                    <span className="text-blue-500">52</span>
                                 </li>
-                                <li class="w-full text-sm flex justify-between">
+                                <li className="w-full text-sm flex justify-between">
                                     Your post views
-                                    <span class="text-blue-500">810</span>
+                                    <span className="text-blue-500">810</span>
                                 </li>
-                                <li class="w-full text-sm flex justify-between">
+                                <li className="w-full text-sm flex justify-between">
                                     Your connections
-                                    <span class="text-blue-500 mb-3">205</span>
+                                    <span className="text-blue-500 mb-3">205</span>
                                 </li>
                             </ul>
                         </div>
