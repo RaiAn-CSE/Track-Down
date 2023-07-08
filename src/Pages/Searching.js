@@ -25,7 +25,6 @@ const Searching = () => {
     const [processingStarted, setProcessingStarted] = useState(false);
     const [findImage, setFindImage] = useState(null);
 
-    console.log(user);
 
     useEffect(() => {
         axios.get('http://localhost:5000/posts')
