@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../contexts/AuthProvider';
 import { toast } from 'react-hot-toast';
 import { useForm } from 'react-hook-form';
@@ -25,6 +25,8 @@ const Searching = () => {
     const [processingStarted, setProcessingStarted] = useState(false);
     const [findImage, setFindImage] = useState(null);
 
+    console.log(user);
+
     useEffect(() => {
         axios.get('http://localhost:5000/posts')
             .then(response => {
@@ -42,6 +44,8 @@ const Searching = () => {
             setAllPostImg(images);
         }
     }, [posts]);
+
+
 
 
     const handleImageItem = (data) => {

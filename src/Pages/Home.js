@@ -6,18 +6,19 @@ import imgCover from "../Assets/images/cover-pic.png"
 import { BsCameraVideoFill, BsFillCameraFill, BsSendCheck } from "react-icons/bs";
 import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
 import { toast } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
 import PostCard from './AllCards/PostCard';
 import Lottie from "lottie-react"
 import Load from "../Assets/load.json"
+import { BiLinkAlt } from 'react-icons/bi';
 
 
 const Home = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { user, loading, setLoading } = useContext(AuthContext);
+    const { user, loading, setLoading, handleImageItem, imageUpload } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [image, setImage] = useState(null)
@@ -48,7 +49,7 @@ const Home = () => {
     // add item button 
     const handleItem = (data) => {
         const img = data.image[0]
-        const { name, price, description } = data;
+        const { description } = data;
 
         const uri = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgBBkey}`
 
@@ -69,7 +70,6 @@ const Home = () => {
                         description,
                         image: imgData.data.url,
                         userEmail: user.email,
-                        userName: user.name,
                     }
 
                     fetch(`http://localhost:5000/posts`, {
@@ -112,8 +112,6 @@ const Home = () => {
                     position: 'top-center'
                 })
             })
-
-
         setLoading(false)
     }
 
@@ -129,20 +127,37 @@ const Home = () => {
             <div className='basis-full lg:basis-1/4 self-start relative lg:sticky top-0 lg:top-[84px]'>
                 <div className={homeCSS.sidebarProfileBox}>
                     <img src={imgCover} alt="cover" width="100%" />
-                    <div className={homeCSS.sidebarProfileInfo}>
-                        <img src={imgUser} alt="profile" />
-                        <h1>John Smith</h1>
-                        <h3>Web developer at Microsoft</h3>
-                        <ul>
-                            <li>Your profile views <span>52</span></li>
-                            <li>Your post views <span>810</span></li>
-                            <li>Your connections <span>205</span></li>
-                        </ul>
+                    <div className='px-5'>
+                        <img className='w-20 bg-white rounded-full -mt-9 p-1' src={user?.photoURL} alt="profile" />
+                        <h1 className='text-base font-semibold text-gray-700'>{user?.displayName}</h1>
+                        <h3 className='text-sm font-medium text-gray-500 my-1'>Web developer at DoReDo Service</h3>
+                        <div class="mt-5">
+                            <ul class="list-none space-y-2">
+                                <li class="w-full text-sm flex justify-between">
+                                    Your profile views
+                                    <span class="text-blue-500">52</span>
+                                </li>
+                                <li class="w-full text-sm flex justify-between">
+                                    Your post views
+                                    <span class="text-blue-500">810</span>
+                                </li>
+                                <li class="w-full text-sm flex justify-between">
+                                    Your connections
+                                    <span class="text-blue-500 mb-3">205</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className={homeCSS.sidebarProfileLink}>
-                        <a href="#"><img src="./images/items.png" alt="" />My Items</a>
-                        <a href="#"><img src="./images/premium.png" alt="" />Try premium</a>
+                    <div className="flex items-center border border-gray-300">
+                        <Link href="#" className="flex items-center py-4 px-2 text-sm w-1/2">
+                            <img src="./images/items.png" alt="" className="w-5 mr-2" />
+                            My Items
+                        </Link>
+                        <Link href="#" className="flex items-center py-4 px-2 border-l border-gray-300 text-sm w-1/2">
+                            <img src="./images/premium.png" alt="" className="w-5 mr-2" />
+                            Try premium
+                        </Link>
                     </div>
                 </div>
 
@@ -180,7 +195,7 @@ const Home = () => {
                 <div className={homeCSS.createPost}>
                     <form onSubmit={handleSubmit(handleItem)}>
                         <div className={homeCSS.createPostInput}>
-                            <img className='w-[35px] rounded-full mr-[10px]' src={imgUser} alt="user" />
+                            <img className='w-[35px] rounded-full mr-[10px]' src={user?.photoURL} alt="user" />
 
                             {
                                 image ?

@@ -52,9 +52,10 @@ const Navbar = () => {
                     {
                         user?.uid ?
                             <>
-                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar p-1">
                                     <div className="rounded-full">
-                                        <GiPlagueDoctorProfile color="#10a37f" size={40} />
+                                        {/* <GiPlagueDoctorProfile color="#10a37f" size={40} /> */}
+                                        <img src={user?.photoURL} alt="Profile Img" />
                                     </div>
                                 </label>
                                 <ul tabIndex={0} className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52 top-[80%]">
@@ -66,13 +67,13 @@ const Navbar = () => {
                                     <li className='w-full '>
                                         <Link to="/dashboard" className="justify-between">
                                             Dashboard
-                                            <span className="badge text-[12px]">role</span>
+                                            <span className="badge text-[12px]">User</span>
                                         </Link>
                                     </li>
                                     <li className='w-full '>
                                         <Link to="/" className="justify-between">
                                             Profile
-                                            <span className="badge text-[12px]">role</span>
+                                            <span className="badge text-[12px]">User</span>
                                         </Link>
                                     </li>
                                     <li className='w-full '><button onClick={() => {

@@ -18,75 +18,87 @@ const SignUp = () => {
     const from = location.state?.from?.pathname || "/";
 
     const submitLogin = data => {
-        console.log(data);
+        // console.log(data);
         const { name, email, password } = data;
+        const img = data.image[0]
 
-        createUser(data.email, data.password, data.name)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                toast('User Created Successfully...')
-                navigate(from, { replace: true });
-                // ...
-                console.log(user);
+        const formData = new FormData()
+        formData.append('image', img)
+        const uri = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgBBkey}`
 
-                const userInfo = {
-                    displayName: data.name,
-                    // photoURL: "https://example.com/jane-q-user/profile.jpg"
-                }
-                updateUser(userInfo)
-                    .then(() => {
-                        const userInfoMongoDb = {
-                            name,
-                            email,
-                            password,
-                        }
+        fetch(uri, {
+            method: 'POST',
+            body: formData
+        })
+            .then(res => res.json())
+            .then(imgData => {
+                if (imgData.success) {
+                    createUser(data.email, data.password, data.name)
+                        .then((userCredential) => {
+                            const user = userCredential.user;
+                            toast('User Created Successfully...')
+                            navigate(from, { replace: true });
+                            // ...
+                            console.log(user);
 
-                        console.log(userInfoMongoDb);
+                            const userInfo = {
+                                displayName: data.name,
+                                photoURL: imgData.data.url
+                            }
+                            updateUser(userInfo)
+                                .then(() => {
+                                    const userInfoMongoDb = {
+                                        name,
+                                        email,
+                                        password,
+                                        image: imgData.data.url,
+                                    }
 
-                        fetch(`http://localhost:5000/users`, {
-                            method: 'POST',
-                            headers: {
-                                'content-type': 'application/json',
-                            },
-                            body: JSON.stringify(userInfoMongoDb)
-                        })
-                            .then(res => res.json())
-                            .then(data => {
+                                    console.log(userInfoMongoDb);
 
-                                if (data.acknowledged) {
+                                    fetch(`http://localhost:5000/users`, {
+                                        method: 'POST',
+                                        headers: {
+                                            'content-type': 'application/json',
+                                        },
+                                        body: JSON.stringify(userInfoMongoDb)
+                                    })
+                                        .then(res => res.json())
+                                        .then(data => {
 
-                                    navigate('/login')
+                                            if (data.acknowledged) {
 
+                                                navigate('/login')
 
-                                    logOut()
-                                        .then(() => {
+                                                logOut()
+                                                    .then(() => {
+                                                    })
+
+                                                toast.success("User registered successfully. Please log in", {
+                                                    duration: 4000,
+                                                    position: 'top-center'
+                                                })
+
+                                            }
 
                                         })
-
-                                    toast.success("User registered successfully. Please log in", {
-                                        duration: 4000,
-                                        position: 'top-center'
-                                    })
-
-                                }
-
-                            })
-                            .catch(error => {
-                                toast.error("Errors happened during stored data in the database", {
-                                    duration: 4000,
-                                    position: 'top-center'
+                                        .catch(error => {
+                                            toast.error("Errors happened during stored data in the database", {
+                                                duration: 4000,
+                                                position: 'top-center'
+                                            })
+                                        })
+                                        .catch(error => {
+                                            toast.error("Errors happened during update the profile", {
+                                                duration: 4000,
+                                                position: 'top-center'
+                                            })
+                                        })
                                 })
-                            })
-                            .catch(error => {
-                                toast.error("Errors happened during update the profile", {
-                                    duration: 4000,
-                                    position: 'top-center'
-                                })
-                            })
-                    })
-                    .catch((error) => { console.log(error.message); });
-            })
-            .catch((error) => {
+                                .catch((error) => { console.log(error.message); });
+                        })
+                }
+            }).catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 // ..
@@ -131,6 +143,12 @@ const SignUp = () => {
                         <div className={SignUpCSS.formGroup}>
                             <input type="text" autoFocus id='' name='' {...register("name")} required />
                             <label className='' htmlFor="name">Name</label>
+                        </div>
+
+                        <div className={SignUpCSS.formGroup}>
+                            <input type="file" hidden className="file-input file-input-bordered file-input-success max-w-xs"  {...register("image", { required: "Image is required" })} />
+
+                            {/* {errors.image?.type === 'required' && <p className='text-red-500 mt-3' role="alert">{errors.image.message}</p>} */}
                         </div>
 
                         <div className={SignUpCSS.formGroup}>
