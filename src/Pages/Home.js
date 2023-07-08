@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from './Home.module.css'
-import imgTrend from "../Assets/images/more.png"
+import trackDownLogo from "../Assets/Logo/track-down-logo.png"
 import imgCover from "../Assets/images/cover-pic.png"
 import { BsCameraVideoFill, BsFillCameraFill, BsFillHouseCheckFill, BsSendCheck } from "react-icons/bs";
 import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
-import { MdOutlineWorkspacePremium } from "react-icons/md";
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -13,6 +12,7 @@ import PostCard from './AllCards/PostCard';
 import Lottie from "lottie-react"
 import Load from "../Assets/load.json"
 import premiumImg from '../Assets/Logo/premiumImg.png'
+import { BiTrendingUp } from 'react-icons/bi';
 
 
 const Home = () => {
@@ -167,27 +167,17 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className={homeCSS.sidebarActivity}>
-                    <h3>RECENT</h3>
-                    <a href="#"><img src="./images/recent.png" alt="pic" />Web Development</a>
-                    <a href="#"><img src="./images/recent.png" alt="pic" />User Interface</a>
-                    <a href="#"><img src="./images/recent.png" alt="pic" />Online Learning</a>
-                    <a href="#"><img src="./images/recent.png" alt="pic" />Learn Online</a>
-                    <a href="#"><img src="./images/recent.png" alt="pic" />Code Better</a>
-                    <a href="#"><img src="./images/recent.png" alt="pic" />Group Learning</a>
-                    <h3>GROUPS</h3>
-                    <a href="#"><img src="./images/group.png" alt="pic" />Web Design Group</a>
-                    <a href="#"><img src="./images/group.png" alt="pic" />HTML & CSS Learners</a>
-                    <a href="#"><img src="./images/group.png" alt="pic" />Python & JavaScript Group</a>
-                    <a href="#"><img src="./images/group.png" alt="pic" />Learn Coding Online</a>
-                    <h3>HASHTAG</h3>
-                    <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> webdevelopment</a>
-                    <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> userinterface</a>
-                    <a href="#"><img src="./images/hashtag.png" alt="hashtag" /> onlinelearning</a>
-
-                    <div className={homeCSS.discoverMoreLink}>
-                        <a href="#">Discover more</a>
+                <div className="bg-white p-4 my-4 text-center text-xs">
+                    <small className="float-right font-medium">Ad &middot; &middot; &middot;</small>
+                    <p className="mt-8 mb-2">Master the 5 principles of web design</p>
+                    <div className="flex justify-center">
+                        <img src="./images/user-1.png" alt="img" className="w-10 rounded-full m-1" />
+                        <img src="./images/mi-logo.png" alt="img" className="w-10 rounded-full m-1" />
                     </div>
+                    <b className="block mt-4 font-medium">Brand and Demand in Xiaomi</b>
+                    <Link to='#' className="inline-block text-[#10a37f] border border-[#10a37f] rounded-full py-1 px-4 mt-6 font-medium">
+                        Learn More
+                    </Link>
                 </div>
 
             </div>
@@ -288,51 +278,61 @@ const Home = () => {
 
             {/* <!-- rightSidebar  --> */}
             <div className='basis-full lg:basis-1/4 self-start relative lg:sticky top-0 lg:top-[84px]'>
-                <div className={homeCSS.sidebarNews}>
-                    <img src={imgTrend} alt="more" className={homeCSS.moreInfoIcon} />
-                    <h3>Trending News</h3>
-                    <a href="#">High demand for skilled manpower</a>
-                    <span>1d ago &middot; 10,934 readers</span>
-
-                    <a href="#">Careers growing horizontally too</a>
-                    <span>19h ago &middot; 1,934 readers</span>
-
-                    <a href="#">Less work visa for US, more for UK</a>
-                    <span>1d ago &middot; 27,934 readers</span>
-
-                    <a href="#">More hiring = higher confidence?</a>
-                    <span>18h ago &middot; 8,934 readers</span>
-
-                    <a href="#">Gautam Adani is the world's third richest</a>
-                    <span>12h ago &middot; 4,334 readers</span>
-
-                    <a href="#" className={homeCSS.readMoreLink}>Read More</a>
-
-                </div>
-
-                <div className={homeCSS.sidebarAd}>
-                    <small>Ad &middot; &middot; &middot;</small>
-                    <p>Master the 5 principles of web design</p>
-                    <div>
-                        <img src="./images/user-1.png" alt="img" />
-                        <img src="./images/mi-logo.png" alt="img" />
+                <div className="bg-white p-4">
+                    <div className='flex justify-between items-center mb-4'>
+                        <h3 className="text-base font-semibold text-gray-700">Trending News</h3>
+                        <BiTrendingUp color='#10a37f' size={20} />
                     </div>
-                    <b>Brand and Demand in Xiaomi</b>
-                    <a href="#" className={homeCSS.adLink}>Learn More</a>
+
+                    <Link to='#' className="block text-xs font-semibold mt-2">High demand for skilled manpower</Link>
+                    <span className="text-xs">1d ago &middot; 10,934 readers</span>
+
+                    <Link to='#' className="block text-xs font-semibold mt-2">Careers growing horizontally too</Link>
+                    <span className="text-xs">19h ago &middot; 1,934 readers</span>
+
+                    <Link to="#" className="block text-xs font-semibold mt-2">Less work visa for US, more for UK</Link>
+                    <span className="text-xs">1d ago &middot; 27,934 readers</span>
+
+                    <Link to="#" className="block text-xs font-semibold mt-2">More hiring = higher confidence?</Link>
+                    <span className="text-xs">18h ago &middot; 8,934 readers</span>
+
+                    <Link to="#" className="block text-xs font-semibold mt-2">Gautam Adani is the world's third richest</Link>
+                    <span className="text-xs">12h ago &middot; 4,334 readers</span> <br />
+
+                    {/* <Link to="#" className="text-[#10a37f] inline-block py-1 font-thin text-sm underline mt-4">
+                        Read More
+                    </Link> */}
+                    <Link to='#' className="inline-block text-xs text-[#10a37f] border border-[#10a37f] rounded-full py-1 px-4 mt-3 font-medium hover:underline">
+                        Read More
+                    </Link>
                 </div>
 
-                <div className={homeCSS.sidebarUsefulLinks}>
-                    <a href="#">About</a>
-                    <a href="#">Accessibility</a>
-                    <a href="#">Help Center</a>
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Advertising</a>
-                    <a href="#">Get the App</a>
-                    <a href="#">More</a>
+                <div className="text-center p-4">
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        About
+                    </Link>
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        Accessibility
+                    </Link>
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        Help Center
+                    </Link>
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        Privacy Policy
+                    </Link>
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        Advertising
+                    </Link>
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        Get the App
+                    </Link>
+                    <Link to='#' className="inline-block mx-2 my-1 text-sm">
+                        More
+                    </Link>
 
-                    <div className={homeCSS.copyrightMsg}>
-                        <img src="./images/logo.png" alt="logo" />
-                        <p>Linkedup &#169; 2023. All right reserved</p>
+                    <div className="flex items-center justify-center text-xs font-medium mt-4">
+                        <img src={trackDownLogo} alt="logo" className="w-6 mr-1" />
+                        <p>LinkedUp &#169; 2023. All rights reserved</p>
                     </div>
                 </div>
             </div>

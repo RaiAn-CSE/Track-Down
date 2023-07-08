@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
-import { GiPlagueDoctorProfile } from 'react-icons/gi';
+import trackDownLogo from "../Assets/Logo/track-down-logo.png"
 
 const Navbar = () => {
 
@@ -31,10 +31,8 @@ const Navbar = () => {
 
 
                 <Link to='/' className="flex title-font font-medium items-center text-gray-900 ml-2 lg:ml-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10 text-white p-2 bg-emerald-500 rounded-full" viewBox="0 0 24 24">
-                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                    </svg>
-                    <span className="ml-3 text-xl">Track-Down</span>
+                    <img width={45} src={trackDownLogo} alt="Logo" />
+                    <span className="ml-1 text-xl">Track-Down</span>
                 </Link>
 
             </div>
