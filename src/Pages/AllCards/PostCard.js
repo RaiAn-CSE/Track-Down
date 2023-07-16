@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { BsEmojiHeartEyes, BsSend } from 'react-icons/bs';
 import { RiShareForwardLine } from 'react-icons/ri';
-import { AuthContext } from '../../contexts/AuthProvider';
 
 const PostCard = (data) => {
 
-    const { user } = useContext(AuthContext);
-
-    const { image, profileImg, userName, description, userEmail } = data.data;
+    const { image, profileImg, userName, description, userEmail, postTime } = data.data;
 
     return (
         <div className={`mt-1 mb-4 pt-5 px-5 rounded-md bg-[#fff]`}>
@@ -18,7 +15,7 @@ const PostCard = (data) => {
                 <div>
                     <h1 className='text-lg leading-none font-semibold text-black'>{userName}</h1>
                     <small className='text-xs block'>{userEmail}</small>
-                    <small className='text-xs block'>21 hours ago</small>
+                    <small className='text-xs block'>{postTime}</small>
                 </div>
             </div>
 

@@ -21,6 +21,7 @@ const Home = () => {
     const [fileName, setFileName] = useState("No selected file")
     const [postInfo, setPostInfo] = useState([]);
 
+
     useEffect(() => {
         fetch('http://localhost:5000/posts')
             .then(res => res.json())
@@ -60,12 +61,28 @@ const Home = () => {
 
                 if (imgData.status === 200) {
 
+                    // Post Time
+                    const currentTime = Date.now();
+                    const date = new Date(currentTime);
+
+                    const year = date.getFullYear();
+                    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+                    const day = date.getDate().toString().padStart(2, '0');
+
+                    const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+                    const formattedTime = date.toLocaleString('en-US', options);
+
+                    const formattedDateTime = `${year}-${month}-${day} ${formattedTime}`;
+                    console.log(formattedDateTime);
+                    // Post Time End
+
                     const itemInfo = {
                         description,
                         image: imgData.data.url,
                         userEmail: user.email,
                         profileImg: user.photoURL,
                         userName: user.displayName,
+                        postTime: formattedDateTime,
                     }
 
                     fetch(`http://localhost:5000/posts`, {
@@ -82,7 +99,6 @@ const Home = () => {
                                 toast.success("Post added successfully", {
                                     duration: 4000,
                                     position: 'top-center'
-
                                 })
                                 window.location.reload()
                                 // navigate('/dashboard/allItems')
@@ -95,7 +111,7 @@ const Home = () => {
                             }
                         })
                         .catch(error => {
-                            toast.error("Failed to store the postt info", {
+                            toast.error("Failed to store the post info", {
                                 duration: 4000,
                                 position: 'top-center'
                             })
