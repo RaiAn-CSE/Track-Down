@@ -2,26 +2,24 @@ import React from 'react';
 import { BiCommentDetail, BiLike } from 'react-icons/bi';
 import { BsEmojiHeartEyes, BsSend } from 'react-icons/bs';
 import { RiShareForwardLine } from 'react-icons/ri';
-import userImage from "../../Assets/images/user-1.png"
 
 const SearchPostCard = ({ findImg }) => {
 
-    // console.log(findImg);
+    const { image, description, userEmail, profileImg, userName } = findImg;
 
     return (
         <div className='pt-5 px-5 rounded-md bg-[#fff]'>
             <div className='flex items-start mb-[20px]'>
-                <img className='w-[40px] rounded-full mr-[10px]' src={userImage} alt="user" />
+                <img className='w-[40px] rounded-full mr-[10px]' src={profileImg} alt="user" />
                 <div>
-                    <h1 className='text-lg leading-none font-semibold text-black'>Raian</h1>
-                    <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
-                    <small className='text-xs block'>userEmail</small>
+                    <h1 className='text-lg leading-none font-semibold text-black'>{userName}</h1>
+                    <small className='text-xs block'>{userEmail}</small>
                     <small className='text-xs block'>21 hours ago</small>
                 </div>
             </div>
 
-            <p className='text-sm mb-[14px]'>Hello </p>
-            <img className='mb-3 h-40 w-auto' src={findImg} alt="Post_img" width="100%" />
+            <p className='text-sm mb-[14px]'>{description}</p>
+            <img className='mb-3 h-40 w-auto' src={image} alt="Post_img" width="100%" />
 
 
             <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>

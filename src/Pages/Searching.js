@@ -21,7 +21,7 @@ const Searching = () => {
     const [fileName, setFileName] = useState("No selected file")
     const [fileSize, setFileSize] = useState(0);
     const [posts, setPosts] = useState(null);
-    const [allPostImg, setAllPostImg] = useState(null);
+    const [allPostData, setAllPostData] = useState(null);
     const [processingStarted, setProcessingStarted] = useState(false);
     const [findImage, setFindImage] = useState(null);
 
@@ -37,14 +37,24 @@ const Searching = () => {
             });
     }, [])
 
+    // useEffect(() => {
+    //     if (posts) {
+    //         const images = posts.map((post) => post.image);
+    //         setAllPostData(images);
+    //     }
+    // }, [posts]);
+
     useEffect(() => {
         if (posts) {
-            const images = posts.map((post) => post.image);
-            setAllPostImg(images);
+            const postData = posts.map((post) => {
+                return {
+                    image: post.image, description: post.description, profileImg: post.profileImg, userEmail
+                        : post.userEmail, userName: post.userName
+                };
+            });
+            setAllPostData(postData);
         }
     }, [posts]);
-
-
 
 
     const handleImageItem = (data) => {
@@ -122,10 +132,12 @@ const Searching = () => {
                 idCardImageElement.src = img1;
 
 
-                allPostImg.forEach(async (imageURL) => {
+                allPostData.forEach(async (postData) => {
+                    const { image, description, userEmail, profileImg, userName } = postData;
+
                     const selfieImageElement = new Image();
                     selfieImageElement.crossOrigin = "anonymous";
-                    selfieImageElement.src = imageURL;
+                    selfieImageElement.src = image;
 
                     // Detect a single face from the ID card image
                     const idCardFaceDetection = await faceapi.detectSingleFace(idCardImageElement,
@@ -162,16 +174,16 @@ const Searching = () => {
                         if (distance < 0.55) {
                             setFindImage((prevFindImage) => {
                                 if (Array.isArray(prevFindImage)) {
-                                    return [...prevFindImage, imageURL];
+                                    return [...prevFindImage, { image, description, userEmail, profileImg, userName }];
                                 }
-                                return [imageURL];
+                                return [{ image, description, userEmail, profileImg, userName }];
                             });
                         }
                     }
-                })
+                });
             })();
         }
-    }, [processingStarted, allPostImg, imageSearch?.image]);
+    }, [processingStarted, allPostData, imageSearch?.image]);
     setLoading(false);
     // ==============================<<<///Image Processing End///>>>==================================== //
 

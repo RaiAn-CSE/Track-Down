@@ -17,7 +17,6 @@ const PostCard = (data) => {
                 <img className='w-[40px] rounded-full mr-[10px]' src={profileImg} alt="user" />
                 <div>
                     <h1 className='text-lg leading-none font-semibold text-black'>{userName}</h1>
-                    <small className='text-xs block'>Founder and CEO at Gellelio group | Angel Investor</small>
                     <small className='text-xs block'>{userEmail}</small>
                     <small className='text-xs block'>21 hours ago</small>
                 </div>
