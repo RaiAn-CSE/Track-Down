@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from './Home.module.css'
-import { BsCameraVideoFill, BsFillCameraFill, BsFillHouseCheckFill, BsSendCheck } from "react-icons/bs";
+import { BsCameraVideoFill, BsFillCameraFill, BsSendCheck } from "react-icons/bs";
 import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../contexts/AuthProvider';
@@ -15,7 +15,7 @@ import RightSidebar from './HomeSidebar/RightSidebar';
 const Home = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { user, loading, setLoading, handleImageItem, imageUpload } = useContext(AuthContext);
+    const { user, loading, setLoading } = useContext(AuthContext);
 
     const [image, setImage] = useState(null)
     const [fileName, setFileName] = useState("No selected file")

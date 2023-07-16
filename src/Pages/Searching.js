@@ -8,12 +8,12 @@ import { FaCloudUploadAlt } from 'react-icons/fa';
 import axios from 'axios';
 import SearchPostCard from './AllCards/SearchPostCard';
 import * as faceapi from 'face-api.js';
-import Lottie from "lottie-react"
-import Load from "../Assets/load.json"
+// import Lottie from "lottie-react"
+// import Load from "../Assets/load.json"
 
 
 const Searching = () => {
-    const { user, loading, setLoading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
 
     const [imageUpload, setImageUpload] = useState(null);
@@ -65,7 +65,6 @@ const Searching = () => {
         const formData = new FormData()
         formData.append('image', img)
 
-        setLoading(true)
         fetch(uri, {
             method: 'POST',
             body: formData
@@ -87,7 +86,6 @@ const Searching = () => {
                     position: 'top-center'
                 })
             })
-        setLoading(false)
     }
 
 
@@ -113,7 +111,7 @@ const Searching = () => {
             imageElement.src = URL.createObjectURL(blob);
         }, "image/jpeg");
     };
-    setLoading(true);
+
     useEffect(() => {
         if (processingStarted) {
             (async () => {
@@ -184,18 +182,18 @@ const Searching = () => {
             })();
         }
     }, [processingStarted, allPostData, imageSearch?.image]);
-    setLoading(false);
     // ==============================<<<///Image Processing End///>>>==================================== //
 
     const handleStartProcessing = () => {
         setProcessingStarted(true);
     };
 
-    if (loading) {
-        return <>
-            <Lottie animationData={Load} loop={true} className="h-[600px]" />
-        </>
-    }
+    // if (loading) {
+    //     return <>
+    //         <Lottie animationData={Load} loop={true} className="h-[600px]" />
+    //     </>
+    // }
+
     return (
         <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex items-center justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
 
