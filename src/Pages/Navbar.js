@@ -9,9 +9,9 @@ const Navbar = () => {
 
     const navItem = <React.Fragment>
         <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400">
-            <Link to='/'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-2 lg:mb-0">Home</button></Link>
+            <Link to='/'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-1 lg:mb-0">Home</button></Link>
 
-            <Link to='/searching'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2">Searching</button></Link>
+            <Link to='/searching'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2 mb-1 lg:mb-0">Searching</button></Link>
 
             <Link to='/contactUs'><button type="button" className="lg:mx-1 focus:outline-none text-white bg-emerald-500 hover:bg-emerald-600 focus:ring focus:ring-emerald-200 rounded text-sm font-semibold px-5 py-2.5 mr-2">Contact Us</button></Link>
         </nav>

@@ -256,7 +256,7 @@ const Searching = () => {
             </div>
 
 
-            <div className='basis-[70%] ml-2 grid grid-cols-1 lg:grid-cols-2 gap-4 duration-300 ease-in-out hover:gap-2'>
+            <div className='basis-[70%] ml-5 grid grid-cols-1 lg:grid-cols-2 gap-2'>
 
                 {
                     findImage && findImage.map((findImg, idx) => <SearchPostCard key={idx} findImg={findImg} />)

@@ -7,8 +7,6 @@ const SearchPostCard = ({ findImg }) => {
 
     const { image, description, userEmail, profileImg, userName, postTime } = findImg;
 
-    console.log(postTime);
-
     return (
         <div className='pt-5 px-5 rounded-md bg-[#fff]'>
             <div className='flex items-start mb-[20px]'>
@@ -21,7 +19,9 @@ const SearchPostCard = ({ findImg }) => {
             </div>
 
             <p className='text-sm mb-[14px]'>{description}</p>
-            <img className='mb-3 h-40 w-auto' src={image} alt="Post_img" width="100%" />
+            <div className='flex justify-center'>
+                <img className='mb-3 h-40 w-auto transform transition-transform hover:scale-200' src={image} alt="Post_img" width="100%" />
+            </div>
 
 
             <div className='flex justify-between items-center flex-wrap border-b border-gray-300 text-xs pb-[6px]'>
