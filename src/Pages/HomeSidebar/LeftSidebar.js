@@ -3,7 +3,7 @@ import { BsFillHouseCheckFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import premiumImg from '../../Assets/Logo/premiumImg.png'
 import { AuthContext } from '../../contexts/AuthProvider';
-import imgCover from "../../Assets/images/cover-pic.png"
+import imgCover from "../../Assets/images/Track-Down-Cover-Img.png"
 
 const LeftSidebar = () => {
 

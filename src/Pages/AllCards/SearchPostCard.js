@@ -5,7 +5,9 @@ import { RiShareForwardLine } from 'react-icons/ri';
 
 const SearchPostCard = ({ findImg }) => {
 
-    const { image, description, userEmail, profileImg, userName } = findImg;
+    const { image, description, userEmail, profileImg, userName, postTime } = findImg;
+
+    console.log(postTime);
 
     return (
         <div className='pt-5 px-5 rounded-md bg-[#fff]'>
@@ -14,7 +16,7 @@ const SearchPostCard = ({ findImg }) => {
                 <div>
                     <h1 className='text-lg leading-none font-semibold text-black'>{userName}</h1>
                     <small className='text-xs block'>{userEmail}</small>
-                    <small className='text-xs block'>21 hours ago</small>
+                    <small className='text-xs block'>{postTime}</small>
                 </div>
             </div>
 

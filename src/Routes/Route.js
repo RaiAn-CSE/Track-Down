@@ -9,6 +9,7 @@ import Searching from "../Pages/Searching.js";
 import DashboardLayout from "../Layout/DashboardLayout.js";
 import DashboardHome from "../Pages/DashboardItems/DashboardHome.js";
 import AllPosts from "../Pages/DashboardItems/AllPosts.js";
+import Text from "../Pages/Text.js";
 
 const router = createBrowserRouter([
     {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             {
                 path: "/searching",
                 element: <Searching />
+            },
+            {
+                path: "/test",
+                element: <Text />
             }
         ]
     },
