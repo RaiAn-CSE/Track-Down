@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import homeCSS from './Home.module.css'
 import { BsCameraVideoFill, BsFillCameraFill, BsSendCheck } from "react-icons/bs";
 import { AiFillCaretDown, AiFillDelete } from "react-icons/ai";
+import { FaUserCircle } from 'react-icons/fa';
 import { toast } from 'react-hot-toast';
 import { AuthContext } from '../contexts/AuthProvider';
 import { useForm } from 'react-hook-form';
@@ -145,7 +146,16 @@ const Home = () => {
                 <div className='bg-white'>
                     <form onSubmit={handleSubmit(handleItem)}>
                         <div className={homeCSS.createPostInput}>
-                            <img className='w-[35px] rounded-full mr-[10px]' src={user?.photoURL} alt="user" />
+                            {
+                                user?.photoURL ?
+                                    <>
+                                        <img className='w-[35px] rounded-full mr-[10px] border-2 p-1' src={user?.photoURL} alt="user" />
+                                    </>
+                                    :
+                                    <>
+                                        <FaUserCircle className='w-[35px] rounded-full mr-[10px] border-2' color="#10a37f" size={30} />
+                                    </>
+                            }
 
                             {
                                 image ?

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import premiumImg from '../../Assets/Logo/premiumImg.png'
 import { AuthContext } from '../../contexts/AuthProvider';
 import imgCover from "../../Assets/images/Track-Down-Cover-Img.png"
+import { FaUserCircle } from 'react-icons/fa';
 
 const LeftSidebar = () => {
 
@@ -13,7 +14,16 @@ const LeftSidebar = () => {
             <div className='bg-white'>
                 <img src={imgCover} alt="cover" width="100%" />
                 <div className='px-5'>
-                    <img className='w-20 bg-white rounded-full -mt-9 p-1' src={user?.photoURL} alt="profile" />
+                    {
+                        user?.photoURL ?
+                            <>
+                                <img className='w-20 bg-white rounded-full -mt-9 p-1 border-2' src={user?.photoURL} alt="profile" />
+                            </>
+                            :
+                            <>
+                                <FaUserCircle className='rounded-full -mt-4 p-1 border-2' color="#10a37f" size={50} />
+                            </>
+                    }
                     <h1 className='text-base font-semibold text-gray-700'>{user?.displayName}</h1>
                     <h3 className='text-sm font-medium text-gray-500 my-1'>Web developer at DoReDo Service</h3>
                     <div className="mt-5">

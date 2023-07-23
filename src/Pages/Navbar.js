@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthProvider';
 import trackDownLogo from "../Assets/Logo/track-down-logo.png"
+import { GiPlagueDoctorProfile } from "react-icons/gi";
 
 const Navbar = () => {
 
@@ -52,7 +53,6 @@ const Navbar = () => {
                             <>
                                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar p-1">
                                     <div className="rounded-full">
-                                        {/* <GiPlagueDoctorProfile color="#10a37f" size={40} /> */}
                                         <img src={user?.photoURL} alt="Profile Img" />
                                     </div>
                                 </label>
@@ -83,7 +83,7 @@ const Navbar = () => {
                     }
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 
