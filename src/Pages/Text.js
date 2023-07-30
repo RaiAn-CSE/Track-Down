@@ -23,7 +23,7 @@ const Text = () => {
     const [filteredPosts, setFilteredPosts] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/posts')
+        axios.get('https://track-down-server.vercel.app/posts')
             .then(response => {
                 const data = response.data;
                 setPosts(data);

@@ -56,7 +56,7 @@ const SignUp = () => {
 
                                     console.log(userInfoMongoDb);
 
-                                    fetch(`http://localhost:5000/users`, {
+                                    fetch(`https://track-down-server.vercel.app/users`, {
                                         method: 'POST',
                                         headers: {
                                             'content-type': 'application/json',

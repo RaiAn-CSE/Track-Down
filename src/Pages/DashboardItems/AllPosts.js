@@ -12,7 +12,7 @@ const AllPosts = () => {
 
     useEffect(() => {
         (async () => {
-            const res = await axios.get(`http://localhost:5000/emailPosts?email=${user?.email}`);
+            const res = await axios.get(`https://track-down-server.vercel.app/emailPosts?email=${user?.email}`);
             setPosts(res.data);
         })();
     }, [user?.email]);
@@ -21,7 +21,7 @@ const AllPosts = () => {
 
     // delete item
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/deleteItem/${id}`, {
+        fetch(`https://track-down-server.vercel.app/deleteItem/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
