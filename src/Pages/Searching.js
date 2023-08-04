@@ -232,14 +232,14 @@ const Searching = () => {
                 </form>
 
 
-                <div className='my-2'>
+                {/* <div className='my-2'>
                     {
                         imageSearch &&
                         <>
                             <img className='rounded-lg w-auto h-auto max-h-full' src={imageSearch.image} alt={fileName} />
                         </>
                     }
-                </div>
+                </div> */}
 
                 <div className='flex justify-center self-start lg:sticky lg:top-[84px]'>
                     {

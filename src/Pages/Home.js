@@ -162,7 +162,7 @@ const Home = () => {
                                     <>
                                         <textarea rows="5" placeholder="write a post" {...register("description")} required></textarea>
                                         <div className='flex items-center ml-2'>
-                                            <img src={image} className='h-auto max-w-full rounded-lg' alt={fileName} />
+                                            <img src={image} className='w-36 lg:w-44 rounded-lg' alt={fileName} />
                                             {/* <p>File Name : {fileName} File Size : {fileSize} bytes</p> */}
                                         </div>
                                     </>
