@@ -183,11 +183,12 @@ const Searching = () => {
         setProcessingStarted(true);
     };
 
-    if (loading) {
-        return <>
-            <Lottie animationData={Load} loop={true} className="h-[600px]" />
-        </>
-    }
+    // if (loading) {
+    //     return <>
+    //         <Lottie animationData={Load} loop={true} className="h-[600px]" />
+    //         <h1>Loading For Search Image...</h1>
+    //     </>
+    // }
 
     return (
         <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
@@ -257,14 +258,22 @@ const Searching = () => {
                 </div>
             </div>
 
+            {
+                loading ?
+                    <>
+                        <div className='basis-[70%] ml-5 absolute top-20 lg:top-0 right-0'>
+                            <Lottie animationData={Load} loop={true} />
+                        </div></>
+                    :
+                    <>
+                        <div className='basis-[70%] ml-5 grid grid-cols-1 lg:grid-cols-2 gap-2 mt-6 lg:mt-2'>
+                            {
+                                findImage && findImage.map((findImg, idx) => <SearchPostCard key={idx} findImg={findImg} />)
+                            }
+                        </div>
+                    </>
+            }
 
-            <div className='basis-[70%] ml-5 grid grid-cols-1 lg:grid-cols-2 gap-2'>
-
-                {
-                    findImage && findImage.map((findImg, idx) => <SearchPostCard key={idx} findImg={findImg} />)
-                }
-
-            </div>
         </div >
     );
 };

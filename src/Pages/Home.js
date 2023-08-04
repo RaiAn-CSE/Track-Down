@@ -21,6 +21,8 @@ const Home = () => {
     const [image, setImage] = useState(null)
     const [fileName, setFileName] = useState("No selected file")
     const [postInfo, setPostInfo] = useState([]);
+    const [isPosting, setIsPosting] = useState(false);
+
 
 
     useEffect(() => {
@@ -44,6 +46,7 @@ const Home = () => {
 
     // add item button 
     const handleItem = (data) => {
+        setIsPosting(true);
         const img = data.image[0]
         const { description } = data;
 
@@ -52,7 +55,7 @@ const Home = () => {
         const formData = new FormData()
         formData.append('image', img)
 
-        setLoading(true)
+
         fetch(uri, {
             method: 'POST',
             body: formData
@@ -101,14 +104,15 @@ const Home = () => {
                                     duration: 4000,
                                     position: 'top-center'
                                 })
+                                setIsPosting(false);
                                 window.location.reload()
-                                // navigate('/dashboard/allItems')
                             }
                             else {
                                 toast.error("Failed to add data", {
                                     duration: 4000,
                                     position: 'top-center'
                                 })
+                                setIsPosting(false);
                             }
                         })
                         .catch(error => {
@@ -116,6 +120,7 @@ const Home = () => {
                                 duration: 4000,
                                 position: 'top-center'
                             })
+                            setIsPosting(false);
                         })
                 }
             })
@@ -218,7 +223,18 @@ const Home = () => {
                                 <span className='ml-2'>Delete</span>
                             </li>
 
-                            <button className='basis-[25%] flex justify-center items-center h-[40px] bg-[#10a37f] text-[white] hover:bg-[#108d6d]' type='submit'><BsSendCheck size={20} /></button>
+                            {isPosting ? (
+                                <div className='basis-[25%] flex justify-center items-center h-[40px]'>
+                                    <Lottie animationData={Load} loop={true} />
+                                </div>
+                            ) : (
+                                <button
+                                    className='basis-[25%] flex justify-center items-center h-[40px] bg-[#10a37f] text-[white] hover:bg-[#108d6d]'
+                                    type='submit'
+                                >
+                                    <BsSendCheck size={20} />
+                                </button>
+                            )}
 
                         </div>
                     </form>
@@ -238,7 +254,7 @@ const Home = () => {
             {/* <!-- rightSidebar  --> */}
             <RightSidebar />
 
-        </div>
+        </div >
     );
 };
 
