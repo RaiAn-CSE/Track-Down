@@ -8,12 +8,12 @@ import { FaCloudUploadAlt } from 'react-icons/fa';
 import axios from 'axios';
 import SearchPostCard from './AllCards/SearchPostCard';
 import * as faceapi from 'face-api.js';
-// import Lottie from "lottie-react"
-// import Load from "../Assets/load.json"
+import Lottie from "lottie-react"
+import Load from "../Assets/load.json"
 
 
 const Searching = () => {
-    const { user } = useContext(AuthContext);
+    const { user, loading, setLoading } = useContext(AuthContext);
     const { register, handleSubmit } = useForm();
 
     const [imageUpload, setImageUpload] = useState(null);
@@ -116,13 +116,14 @@ const Searching = () => {
                     faceapi.nets.faceExpressionNet.loadFromUri('/models')
                 ]);
 
+
                 const img1 = imageSearch.image;
 
                 const idCardImageElement = document.createElement('img');
                 idCardImageElement.crossOrigin = 'anonymous';
                 idCardImageElement.src = img1;
 
-
+                setLoading(true);
                 allPostData.forEach(async (postData) => {
                     const { image, description, userEmail, profileImg, userName, postTime } = postData;
 
@@ -169,26 +170,27 @@ const Searching = () => {
                                 }
                                 return [{ image, description, userEmail, profileImg, userName, postTime }];
                             });
+                            setLoading(false);
                         }
                     }
                 });
             })();
         }
-    }, [processingStarted, allPostData, imageSearch?.image]);
+    }, [processingStarted, setLoading, allPostData, imageSearch?.image]);
     // ==============================<<<///Image Processing End///>>>==================================== //
 
     const handleStartProcessing = () => {
         setProcessingStarted(true);
     };
 
-    // if (loading) {
-    //     return <>
-    //         <Lottie animationData={Load} loop={true} className="h-[600px]" />
-    //     </>
-    // }
+    if (loading) {
+        return <>
+            <Lottie animationData={Load} loop={true} className="h-[600px]" />
+        </>
+    }
 
     return (
-        <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex items-center justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
+        <div className=' bg-gray-100 text-gray-600 min-h-screen block lg:flex justify-between py-[5px] lg:py-[10px] px-[3%] lg:px-[6%]'>
 
             <div className='basis-full lg:basis-[30%] self-start lg:sticky lg:top-[84px]'>
                 <form onSubmit={handleSubmit(handleImageItem)}>

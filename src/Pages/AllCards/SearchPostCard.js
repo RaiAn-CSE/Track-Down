@@ -8,7 +8,7 @@ const SearchPostCard = ({ findImg }) => {
     const { image, description, userEmail, profileImg, userName, postTime } = findImg;
 
     return (
-        <div className='pt-5 px-5 rounded-md bg-[#fff]'>
+        <div className='pt-5 px-5 rounded-md bg-[#fff] h-fit'>
             <div className='flex items-start mb-[20px]'>
                 <img className='w-[40px] rounded-full mr-[10px]' src={profileImg} alt="user" />
                 <div>
