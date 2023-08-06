@@ -17,9 +17,9 @@ const DashboardHome = () => {
         <div>
             <h1 className="my-7 text-2xl capitalize font-bold text-emerald-500 text-center">Welcome to dashboard</h1>
 
-            <div className="w-11/12  mt-5 lg:mt-0 p-6 flex flex-col items-center bg-[#ff5252] border border-gray-200 rounded-lg shadow  dark:border-gray-700">
+            <div className="w-full  mt-5 lg:mt-0 p-6 flex flex-col items-center bg-[#ff5252] border border-gray-200 rounded-lg shadow  dark:border-gray-700">
 
-                <h5 className="mb-4 text-2xl font-semibold tracking-tight text-white">Available Items</h5>
+                <h5 className="mb-4 text-2xl font-semibold tracking-tight text-white">Your Posts</h5>
 
                 <p className="mb-3 font-normal text-xl text-white">{posts}</p>
             </div>

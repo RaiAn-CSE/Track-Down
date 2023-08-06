@@ -63,7 +63,7 @@ const Navbar = () => {
                                         </p>
                                     </li>
                                     <li className='w-full '>
-                                        <Link to="/dashboard" className="justify-between">
+                                        <Link to="/dashboardLayout" className="justify-between">
                                             Dashboard
                                             <span className="badge text-[12px]">User</span>
                                         </Link>

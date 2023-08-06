@@ -40,8 +40,8 @@ const AllPosts = () => {
     }
 
     return (
-        <div className="overflow-x-auto w-full">
-            <table className="table w-full">
+        <div className="">
+            <table className="table">
 
                 <thead>
                     <tr>

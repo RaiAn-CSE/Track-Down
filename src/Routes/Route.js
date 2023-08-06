@@ -10,6 +10,8 @@ import DashboardLayout from "../Layout/DashboardLayout.js";
 import DashboardHome from "../Pages/DashboardItems/DashboardHome.js";
 import AllPosts from "../Pages/DashboardItems/AllPosts.js";
 import Text from "../Pages/Text.js";
+import Dashboard from "../Pages/Dashboard.js";
+import DashboardPostCard from "../Pages/AllCards/DashboardPostCard.js";
 
 const router = createBrowserRouter([
     {
@@ -39,21 +41,25 @@ const router = createBrowserRouter([
             {
                 path: "/test",
                 element: <Text />
-            }
+            },
         ]
     },
     {
-        path: '/dashboard',
+        path: '/dashboardLayout',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         // errorElement: <DisplayError></DisplayError>,
         children: [
             {
-                path: '/dashboard',
+                path: '/dashboardLayout',
                 element: <DashboardHome />
             },
             {
-                path: '/dashboard/allPosts',
+                path: '/dashboardLayout/allPosts',
                 element: <AllPosts />
+            },
+            {
+                path: '/dashboardLayout/dashboard',
+                element: <Dashboard />
             },
         ]
     },
